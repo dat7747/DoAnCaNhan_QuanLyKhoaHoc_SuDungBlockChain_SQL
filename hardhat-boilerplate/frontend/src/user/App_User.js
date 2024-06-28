@@ -1,5 +1,6 @@
 import React from "react";
 import { ethers } from "ethers";
+import { BrowserRouter as Router,Switch, Route, Link } from "react-router-dom";
 import CourseRegistrationArtifact from "../contracts/CourseRegistration.json";
 import contractAddress from "../contracts/contract-Course-address.json";
 import TokenArtifact from "../contracts/Token.json";
@@ -8,8 +9,10 @@ import ownerAddress from "../contracts/owner-address.json";
 import { NoWalletDetected } from "../components/NoWalletDetected";
 import { Loading } from "../components/Loading";
 import { ViewCardCourse } from "./components/ViewCardCourse";
+import  NFTDisplay  from "./components/NFTDisplay";
 import { Card, Container, Row } from "react-bootstrap";
 import axios from 'axios';
+import NFT_address from "../contracts/contract-Hero-address.json";
 import { WalletConnector } from "./components/WalletConnector";
 
 export class App_User extends React.Component {
@@ -144,27 +147,47 @@ export class App_User extends React.Component {
     }
 
     return (
-      <div className="container full">
-        <Card className="text-center" style={{ backgroundColor: "#f5f5f5" }}>
-          <Card.Body>
-            <Card.Title>Welcome User To Courses</Card.Title>
-            <WalletConnector onLogin={this.props.onLogin} />
-          </Card.Body>
-        </Card>
-        <Container>
-          <Row className="justify-content-md-center" style={{ display: "grid", gridTemplateColumns: "repeat(4, auto)", gap: "20px" }}>
-            {error && <div className="alert alert-danger">{error.message}</div>}
-            <ViewCardCourse
-              courses={courses}
-              onRegister={this.registerCourse.bind(this)}
-              tokenContract={this.tokenContract}
-              ownerAddress={ownerAddress}
-              processingTransaction={processingTransaction}
-              selectedCourseId={selectedCourseId}  // Truyền selectedCourseId xuống ViewCardCourse
-              sendDataToBackend={(courseId, email, address) => this.sendDataToBackend(courseId, email, address, selectedCourseId)} />
-          </Row>
-        </Container>
-      </div>
+      <Router>
+        <div className="container full">
+          <Card className="text-center" style={{ backgroundColor: "#f5f5f5" }}>
+            <Card.Body>
+              <Card.Title>Welcome User To Courses</Card.Title>
+              <WalletConnector onLogin={this.props.onLogin} />
+            </Card.Body>
+          </Card>
+
+          <nav>
+            <ul>
+              <li>
+                <Link to="/course">Course</Link>
+              </li>
+              <li>
+                <Link to="/nft-market">NFT Market</Link>
+              </li>
+            </ul>
+          </nav>
+
+          <Switch>
+            <Route exact path="/course">
+              <ViewCardCourse
+                courses={courses}
+                error={error}
+                onRegister={this.registerCourse.bind(this)}
+                tokenContract={this.tokenContract}
+                ownerAddress={ownerAddress}
+                processingTransaction={processingTransaction}
+                selectedCourseId={selectedCourseId}
+                sendDataToBackend={(courseId, email, address) => this.sendDataToBackend(courseId, email, address, selectedCourseId)} />
+            </Route>
+            <Route path="/nft-market">
+              <NFTDisplay
+                contractAddress={NFT_address.Hero}
+                tokenId={123} // Thay đổi tokenId tương ứng với NFT cụ thể
+                provider={this.provider} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }
