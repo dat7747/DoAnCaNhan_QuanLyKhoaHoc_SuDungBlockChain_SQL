@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button, Form, Modal } from "react-bootstrap";
+import { Card, Button, Form, Modal, Col, Container, Row } from "react-bootstrap";
 
 export class ViewCardCourse extends React.Component {
     constructor(props) {
@@ -46,34 +46,38 @@ export class ViewCardCourse extends React.Component {
         const { email } = this.state;
 
         return (
-            <div className="view-card-course" style={{ backgroundColor: "#87CEEB", width: "70vw" }}>
+            <div className="view-card-course" style={{ backgroundColor: "#87CEEB" }}>
                 <h2 className="text-center">Các lớp học hiện tại</h2>
-                <div className="card-grid" style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))", gap: "20px" }}>
-                    {courses && courses.length > 0 ? (
-                        courses.map((course) => (
-                            course.status === "open" && (
-                                <Card key={course.id}>
-                                    {course.image && (
-                                        <Card.Img variant="top" src={`http://localhost:3001/uploads/${course.image}`} style={{ height: "150px", objectFit: "cover" }} />
-                                    )}
-                                    <Card.Body>
-                                        <Card.Title>Course ID: {course.id}</Card.Title>
-                                        <Card.Text>
-                                            Price: {this.formatPrice(course.price)} <br />
-                                            Sessions: {course.session}
-                                        </Card.Text>
+                <Container>
+                    <Row xs={1} md={4} className="g-4">
+                        {courses && courses.length > 0 ? (
+                            courses.map((course) => (
+                                course.status === "open" && (
+                                    <Col key={course.id}>
+                                        <Card>
+                                            {course.image && (
+                                                <Card.Img variant="top" src={`http://localhost:3001/uploads/${course.image}`} style={{ height: "150px", objectFit: "cover" }} />
+                                            )}
+                                            <Card.Body>
+                                                <Card.Title>Course ID: {course.id}</Card.Title>
+                                                <Card.Text>
+                                                    Price: {this.formatPrice(course.price)} <br />
+                                                    Sessions: {course.session}
+                                                </Card.Text>
 
-                                        <div style={{ textAlign: "center" }}>
-                                            <Button variant="primary" onClick={() => this.props.onRegister(course.id, course.price)} disabled={processingTransaction}>Register</Button>
-                                        </div>
-                                    </Card.Body>
-                                </Card>
-                            )
-                        ))
-                    ) : (
-                        <p>Không có khóa học nào để hiển thị.</p>
-                    )}
-                </div>
+                                                <div style={{ textAlign: "center" }}>
+                                                    <Button variant="primary" onClick={() => this.props.onRegister(course.id, course.price)} disabled={processingTransaction}>Register</Button>
+                                                </div>
+                                            </Card.Body>
+                                        </Card>
+                                    </Col>
+                                )
+                            ))
+                        ) : (
+                            <p>Không có khóa học nào để hiển thị.</p>
+                        )}
+                    </Row>
+                </Container>
                 {this.props.selectedCourseId && (
                     <Modal show={true}>
                         <Modal.Header closeButton={false}>

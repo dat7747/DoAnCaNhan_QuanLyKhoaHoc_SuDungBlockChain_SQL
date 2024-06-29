@@ -132,7 +132,7 @@
 
 
 
-//===================================Deploy NFT_LTD==================
+//===================================Deploy Hero==================
 // const { ethers } = require("hardhat");
 // const path = require("path");
 
@@ -183,7 +183,7 @@
 //   const HeroMarketplace = await ethers.getContractFactory("HeroMarketplace");
 //   const heroMarketplace = await HeroMarketplace.deploy(
 //     "0x69858Fe488cbc1E6498BaC081Ea0Dd16Ee2cC6d5", // Địa chỉ token ERC20
-//     "0x39418cEA6Bb4139E8da8Bd69c17e2DC1e66486e8" // Địa chỉ NFT ERC721
+//     "0xD63B98aD5Bd9463516166ECaDdB1628581f06876" // Địa chỉ NFT ERC721
 //   );
 
 //   await heroMarketplace.deployed();
@@ -227,7 +227,7 @@ async function main() {
   const Auction = await ethers.getContractFactory("Auction");
   const auction = await Auction.deploy(
     "0x69858Fe488cbc1E6498BaC081Ea0Dd16Ee2cC6d5", // Địa chỉ token ERC20
-    "0x39418cEA6Bb4139E8da8Bd69c17e2DC1e66486e8" // Địa chỉ NFT ERC721
+    "0xD63B98aD5Bd9463516166ECaDdB1628581f06876" // Địa chỉ NFT ERC721
   );
 
   await auction.deployed();

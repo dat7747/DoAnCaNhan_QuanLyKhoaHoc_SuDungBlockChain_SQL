@@ -15,7 +15,7 @@ const NFTDisplay = ({ contractAddress, tokenId, provider }) => {
           throw new Error('contractAddress, tokenId, or provider is undefined');
         }
 
-        const contract = new ethers.Contract(NFT_address.Hero, NFT_artifacts.abi, provider);
+        const contract = new ethers.Contract(contractAddress, NFT_artifacts.abi, provider);
         let tokenURI = await contract.tokenURI(tokenId);
         console.log('Token URI:', tokenURI);
 
@@ -34,6 +34,7 @@ const NFTDisplay = ({ contractAddress, tokenId, provider }) => {
         setLoading(false);
       } catch (error) {
         console.error('Lỗi khi lấy dữ liệu NFT:', error);
+        setLoading(false); // Cập nhật trạng thái loading khi có lỗi
       }
     };
 
@@ -45,20 +46,22 @@ const NFTDisplay = ({ contractAddress, tokenId, provider }) => {
   }
 
   return (
-    <Card style={{ width: '18rem' }}>
-      {nftData && (
-        <>
-          <Card.Img variant="top" src={nftData.image} />
-          <Card.Body>
-            <Card.Title>{nftData.name}</Card.Title>
-            <Card.Text>{nftData.description}</Card.Text>
-            <Button variant="primary" href={nftData.external_url} target="_blank" rel="noopener noreferrer">
-              Xem NFT
-            </Button>
-          </Card.Body>
-        </>
-      )}
-    </Card>
+    <div className="text-center p-4">
+      <Card style={{ width: '18rem', margin: '0 auto' }}>
+        {nftData && (
+          <>
+            <Card.Img variant="top" src={nftData.image} />
+            <Card.Body>
+              <Card.Title>{nftData.name}</Card.Title>
+              <Card.Text>{nftData.description}</Card.Text>
+              <Button variant="primary" href={nftData.external_url} target="_blank" rel="noopener noreferrer">
+                Xem NFT
+              </Button>
+            </Card.Body>
+          </>
+        )}
+      </Card>
+    </div>
   );
 };
 
