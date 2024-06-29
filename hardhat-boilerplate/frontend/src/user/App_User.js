@@ -180,11 +180,11 @@ export class App_User extends React.Component {
                 sendDataToBackend={(courseId, email, address) => this.sendDataToBackend(courseId, email, address, selectedCourseId)} />
             </Route>
             <Route path="/nft-market">
-              <NFTDisplay
-                contractAddress={NFT_address.Hero}
-                tokenId={123} // Thay đổi tokenId tương ứng với NFT cụ thể
-                provider={this.provider} />
-            </Route>
+            <NFTDisplay
+              contractAddress={NFT_address.Hero}
+              tokenId={3} // Thay đổi tokenId tương ứng với NFT cụ thể
+              provider={this.provider} />
+          </Route>
           </Switch>
         </div>
       </Router>

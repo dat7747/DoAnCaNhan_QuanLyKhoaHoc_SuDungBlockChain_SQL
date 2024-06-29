@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Button } from 'react-bootstrap';
-import { ethers } from 'ethers'; // Import ethers.js để tương tác với Ethereum
+import { ethers } from 'ethers';
 import NFT_address from "../../contracts/contract-Hero-address.json";
 import NFT_artifacts from "../../contracts/Hero.json";
 
@@ -15,14 +15,21 @@ const NFTDisplay = ({ contractAddress, tokenId, provider }) => {
           throw new Error('contractAddress, tokenId, or provider is undefined');
         }
 
-        // Kết nối tới contract NFT
         const contract = new ethers.Contract(NFT_address.Hero, NFT_artifacts.abi, provider);
+        let tokenURI = await contract.tokenURI(tokenId);
+        console.log('Token URI:', tokenURI);
 
-        // Lấy thông tin metadata của NFT với tokenId tương ứng
-        const tokenURI = await contract.tokenURI(tokenId);
-        const response = await fetch(tokenURI);
+        // Thêm `.json` vào cuối đường dẫn
+        if (!tokenURI.endsWith('.json')) {
+          tokenURI += '.json';
+        }
+
+        const response = await fetch(tokenURI, { mode: 'cors' });
+        if (!response.ok) {
+          throw new Error(`Fetch request failed with status: ${response.status}`);
+        }
+
         const metadata = await response.json();
-
         setNFTData(metadata);
         setLoading(false);
       } catch (error) {
