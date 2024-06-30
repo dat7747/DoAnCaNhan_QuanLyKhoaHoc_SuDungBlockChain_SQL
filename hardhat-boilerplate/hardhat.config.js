@@ -1,4 +1,5 @@
-require("@nomicfoundation/hardhat-toolbox");
+
+require('@nomicfoundation/hardhat-toolbox');
 // Load environment variables from .env file
 require('dotenv').config();
 // Get API key and private key from environment variables
