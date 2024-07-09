@@ -21,13 +21,15 @@ export class App_User extends React.Component {
 
     this.state = {
       courses: [],
-      loading: false,
-      error: null,
+      loadingCourses: true,
+      errorCourses: null,
       successMessage: null,
       processingTransaction: false,
       selectedCourseId: null,
-      nfts: [] ,
-       selectedTab: "course"
+      nfts: [],
+      loadingNFTs: true,
+      errorNFTs: null,
+      selectedTab: "course"
     };
 
     if (window.ethereum) {
@@ -73,10 +75,10 @@ export class App_User extends React.Component {
     try {
       const response = await axios.get("http://localhost:3001/api/getCourses"); // Đảm bảo đường dẫn endpoint chính xác
       const courses = response.data; // Giả sử dữ liệu được trả về là mảng các khóa học
-      this.setState({ courses, loading: false });
+      this.setState({ courses, loadingCourses: false });
     } catch (error) {
       console.error("Error getting courses from backend:", error);
-      this.setState({ error, loading: false });
+      this.setState({ errorCourses: error, loadingCourses: false });
     }
   }
 
@@ -97,10 +99,10 @@ export class App_User extends React.Component {
         const tokenId = await nftContract.tokenOfOwnerByIndex(address, i);
         nfts.push(tokenId.toString());
       }
-      this.setState({ nfts });
+      this.setState({ nfts, loadingNFTs: false });
     } catch (error) {
       console.error("Error fetching NFTs:", error);
-      this.setState({ error });
+      this.setState({ errorNFTs: error, loadingNFTs: false });
     }
   }
 
@@ -161,7 +163,7 @@ export class App_User extends React.Component {
       await this.getCourses();
     } catch (error) {
       console.error("Error registering course:", error);
-      this.setState({ error, loading: false });
+      this.setState({ errorCourses: error, loadingCourses: false });
     } finally {
       this.setState({ processingTransaction: false });
     }
@@ -172,7 +174,7 @@ export class App_User extends React.Component {
   }
 
   render() {
-    const { courses, loadingCourses,selectedCourseId,processingTransaction, errorCourses, nfts, loadingNFTs, errorNFTs, selectedTab } = this.state;
+    const { courses, loadingCourses, selectedCourseId, processingTransaction, errorCourses, nfts, loadingNFTs, errorNFTs, selectedTab } = this.state;
 
     let content;
     if (loadingCourses || loadingNFTs) {
