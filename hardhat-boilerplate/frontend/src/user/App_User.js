@@ -1,6 +1,8 @@
 import React from "react";
-import { ethers } from "ethers";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { ethers } from "ethers";
+import { Card, Container, Row, Col } from "react-bootstrap";
+import axios from "axios";
 import CourseRegistrationArtifact from "../contracts/CourseRegistration.json";
 import contractAddress from "../contracts/contract-Course-address.json";
 import TokenArtifact from "../contracts/Token.json";
@@ -10,10 +12,11 @@ import { NoWalletDetected } from "../components/NoWalletDetected";
 import { Loading } from "../components/Loading";
 import { ViewCardCourse } from "./components/ViewCardCourse";
 import NFTDisplay from "./components/NFTDisplay";
-import { Card, Container, Row, Col } from "react-bootstrap";
-import axios from "axios";
 import NFT_address from "../contracts/contract-Hero-address.json";
 import { WalletConnector } from "./components/WalletConnector";
+
+// Import Marketplace component
+import Marketplace from "./components/Marketplace";
 
 export class App_User extends React.Component {
   constructor(props) {
@@ -199,7 +202,7 @@ export class App_User extends React.Component {
             />
           );
           break;
-        case "nft-market":
+        case "nft-of-you":
           content = (
             <Container>
               <Row>
@@ -214,6 +217,11 @@ export class App_User extends React.Component {
                 )}
               </Row>
             </Container>
+          );
+          break;
+        case "nft-marketplace":
+          content = (
+            <Marketplace provider={this.provider} />
           );
           break;
         default:
@@ -245,11 +253,20 @@ export class App_User extends React.Component {
                 </li>
                 <li className="nav-item">
                   <Link
-                    to="/nft-market"
-                    className={`nav-link ${selectedTab === "nft-market" ? "active" : ""}`}
-                    onClick={() => this.handleTabChange("nft-market")}
+                    to="/nft-of-you"
+                    className={`nav-link ${selectedTab === "nft-of-you" ? "active" : ""}`}
+                    onClick={() => this.handleTabChange("nft-of-you")}
                   >
-                    NFT Market
+                    NFT OF YOU
+                  </Link>
+                </li>
+                <li className="nav-item">
+                  <Link
+                    to="/nft-marketplace"
+                    className={`nav-link ${selectedTab === "nft-marketplace" ? "active" : ""}`}
+                    onClick={() => this.handleTabChange("nft-marketplace")}
+                  >
+                    NFT MARKETPLACE
                   </Link>
                 </li>
               </ul>
@@ -259,7 +276,8 @@ export class App_User extends React.Component {
               <Route exact path="/course">
                 {content}
               </Route>
-              <Route path="/nft-market">{content}</Route>
+              <Route path="/nft-of-you">{content}</Route>
+              <Route path="/nft-marketplace">{content}</Route>
             </Switch>
           </div>
         </div>
