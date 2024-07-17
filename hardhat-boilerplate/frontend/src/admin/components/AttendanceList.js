@@ -64,26 +64,30 @@ export function AttendanceList() {
       </form>
       {error && <div className="error">{error.message}</div>}
       {attendanceData.length > 0 && (
-        <table className="attendance-table">
-          <thead>
-            <tr>
-              <th>User Address</th>
-              {attendanceData[0].attendance.map((_, sessionIndex) => (
-                <th key={sessionIndex}>Session {sessionIndex + 1}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody>
-            {attendanceData.map((data, index) => (
-              <tr key={index}>
-                <td>{data.user}</td>
-                {data.attendance.map((att, sessionIndex) => (
-                  <td key={sessionIndex}>{att.toString()}</td>
+        <div className="table-container">
+          <table className="attendance-table">
+            <thead>
+              <tr>
+                <th>User Address</th>
+                {attendanceData[0].attendance.map((_, sessionIndex) => (
+                  <th key={sessionIndex}>Session {sessionIndex + 1}</th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {attendanceData.map((data, index) => (
+                <tr key={index}>
+                  <td>{data.user}</td>
+                  {data.attendance.map((att, sessionIndex) => (
+                    <td key={sessionIndex} className={att ? "text-success" : "text-danger"}>
+                      {att.toString()}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </div>
   );

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="blockchain" Class="QL_KHOAHOCDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.;Initial Catalog=blockchain;Integrated Security=True" SettingsObjectName="QL_DangKy_KhoaHoc.Properties.Settings" SettingsPropertyName="blockchainConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.course" Member="courses">
+    <Type Name="course">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL" IsPrimaryKey="true" CanBeNull="false" />
+      <Column Name="price" Type="System.Double" DbType="Float" CanBeNull="true" />
+      <Column Name="session" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="image" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Association Name="course_UserAttendance" Member="UserAttendances" ThisKey="id" OtherKey="courseId" Type="UserAttendance" />
+      <Association Name="course_CourseRegistrationHistory" Member="CourseRegistrationHistories" ThisKey="id" OtherKey="courseId" Type="CourseRegistrationHistory" />
+      <Association Name="course_info" Member="infos" ThisKey="id" OtherKey="id" Type="info" />
+      <Association Name="course_notification" Member="notifications" ThisKey="id" OtherKey="id" Type="notification" />
+      <Association Name="course_ClassDetail" Member="ClassDetails" ThisKey="id" OtherKey="courseId" Type="ClassDetail" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserAttendance" Member="UserAttendances">
+    <Type Name="UserAttendance">
+      <Column Name="courseId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="sessionNumber" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="attended" Type="System.Byte" DbType="TinyInt" CanBeNull="true" />
+      <Association Name="course_UserAttendance" Member="course" ThisKey="courseId" OtherKey="id" Type="course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CourseRegistrationHistory" Member="CourseRegistrationHistories">
+    <Type Name="CourseRegistrationHistory">
+      <Column Name="registrationId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="courseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="senderAddress" Type="System.String" DbType="VarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="registrationTime" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="transactionHash" Type="System.String" DbType="VarChar(255) NOT NULL" CanBeNull="false" />
+      <Association Name="course_CourseRegistrationHistory" Member="course" ThisKey="courseId" OtherKey="id" Type="course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.info" Member="infos">
+    <Type Name="info">
+      <Column Name="id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="gmail" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="course_info" Member="course" ThisKey="id" OtherKey="id" Type="course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.notifications" Member="notifications">
+    <Type Name="notification">
+      <Column Name="id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="notification" Member="notification1" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="zoom_link" Type="System.String" DbType="VarChar(255)" CanBeNull="true" />
+      <Column Name="session_number" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="course_notification" Member="course" ThisKey="id" OtherKey="id" Type="course" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TokenWithdrawals" Member="TokenWithdrawals">
+    <Type Name="TokenWithdrawal">
+      <Column Name="id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sender_address" Type="System.String" DbType="VarChar(42) NOT NULL" CanBeNull="false" />
+      <Column Name="recipient_address" Type="System.String" DbType="VarChar(42) NOT NULL" CanBeNull="false" />
+      <Column Name="amount" Type="System.Decimal" DbType="Decimal(38,18) NOT NULL" CanBeNull="false" />
+      <Column Name="transaction_hash" Type="System.String" DbType="VarChar(66)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="created_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="updated_at" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.ClassDetails" Member="ClassDetails">
+    <Type Name="ClassDetail">
+      <Column Name="classId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="courseId" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="className" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="classDescription" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="startTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="endTime" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="teacherName" Type="System.String" DbType="NVarChar(255) NOT NULL" CanBeNull="false" />
+      <Column Name="classRoom" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Association Name="course_ClassDetail" Member="course" ThisKey="courseId" OtherKey="id" Type="course" IsForeignKey="true" />
+    </Type>
+  </Table>
+</Database>
