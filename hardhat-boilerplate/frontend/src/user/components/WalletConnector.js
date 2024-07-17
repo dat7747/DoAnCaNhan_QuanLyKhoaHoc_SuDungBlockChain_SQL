@@ -6,6 +6,8 @@ import { toast } from "react-toastify";
 import { FaBell, FaCheckCircle } from 'react-icons/fa';
 import NotificationList from "../../admin/components/NotificationList";
 import axios from 'axios';
+import { Container, Alert, Row, Col } from 'react-bootstrap';
+import '../../css/WalletConnector.css';
 
 export function WalletConnector({ onLogin }) {
   const [selectedAddress, setSelectedAddress] = useState(undefined);
@@ -18,7 +20,7 @@ export function WalletConnector({ onLogin }) {
     try {
       const [address] = await window.ethereum.request({ method: 'eth_requestAccounts' });
       setSelectedAddress(address);
-      onLogin(address); // Gọi hàm onLogin với địa chỉ ví sau khi kết nối thành công
+      onLogin(address);
       setShowNotificationBell(true);
       toast.success("Wallet connected successfully!");
     } catch (error) {
@@ -38,8 +40,7 @@ export function WalletConnector({ onLogin }) {
       const response = await axios.get('http://localhost:3001/api/getNotifications', {
         params: { address: selectedAddress }
       });
-      const notifications = response.data;
-      setNotifications(notifications);
+      setNotifications(response.data);
       console.log('Address sent to backend:', selectedAddress);
     } catch (error) {
       console.error('Error fetching notifications:', error);
@@ -52,7 +53,7 @@ export function WalletConnector({ onLogin }) {
   };
 
   return (
-    <div className="container p-4">
+    <Container className="wallet-connector p-4">
       {window.ethereum === undefined ? (
         <NoWalletDetected />
       ) : (
@@ -64,15 +65,28 @@ export function WalletConnector({ onLogin }) {
               dismiss={() => setNetworkError(undefined)}
             />
           ) : (
-            <p>
-              Welcome <b>{selectedAddress}</b>
-              {showNotificationBell && <FaBell style={{ color: 'yellow', fontSize: '24px' }} onClick={handleNewNotification} />}
-              {showNotificationTick && <FaCheckCircle style={{ color: 'red', fontSize: '24px' }} />}
-            </p>
+            <Alert variant="success">
+              <Row className="align-items-center">
+                <Col md="auto">
+                  <h5>Welcome <b>{selectedAddress}</b></h5>
+                </Col>
+                <Col>
+                  {showNotificationBell && (
+                    <FaBell
+                      className="notification-icon"
+                      onClick={handleNewNotification}
+                    />
+                  )}
+                  {showNotificationTick && (
+                    <FaCheckCircle className="notification-icon" />
+                  )}
+                </Col>
+              </Row>
+            </Alert>
           )}
           <NotificationList notifications={notifications} selectedAddress={selectedAddress} />
         </>
       )}
-    </div>
+    </Container>
   );
 }

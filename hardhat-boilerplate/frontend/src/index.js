@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import ReactDOM from "react-dom/client";
 import { App } from "./admin/App";
 import { App_User } from "./user/App_User";
+import Footer from "./Footer";
 import "bootstrap/dist/css/bootstrap.css";
-import "./style.css";
+import "../src/css/style.css";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -34,6 +35,7 @@ const Main = () => {
           <App_User onLogin={handleLogin} />
         )}
       </div>
+      <Footer />
     </React.StrictMode>
   );
 };

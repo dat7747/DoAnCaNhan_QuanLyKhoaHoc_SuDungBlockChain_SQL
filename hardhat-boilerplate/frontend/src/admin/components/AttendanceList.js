@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { ethers } from "ethers";
 import CourseRegistrationArtifact from "../../contracts/CourseRegistration.json";
 import contractAddress from "../../contracts/contract-Course-address.json";
-import "../../AttendanceList.css"; // Import file CSS
+import "../../css/AttendanceList.css"; // Import file CSS
 
 export function AttendanceList() {
   const [courseId, setCourseId] = useState("");

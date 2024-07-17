@@ -18,7 +18,7 @@ const NFTDisplay = ({ contractAddress, tokenId, provider }) => {
         }
 
         const contract = new ethers.Contract(contractAddress, NFT_artifacts.abi, provider);
-        const tokenUri = await contract.tokenURI(tokenId); // Ensure tokenURI is called correctly with the tokenId
+        const tokenUri = await contract.tokenURI(tokenId);
         console.log('Token URI:', tokenUri);
 
         const response = await fetch(tokenUri, { mode: 'cors' });
@@ -29,9 +29,9 @@ const NFTDisplay = ({ contractAddress, tokenId, provider }) => {
         const metadata = await response.json();
         setNFTData(metadata);
 
-        const marketplaceContract = new ethers.Contract(Marketplace_address, Marketplace_artifacts.abi, provider);
+        const marketplaceContract = new ethers.Contract(Marketplace_address.HeroMarketplace, Marketplace_artifacts.abi, provider);
         const listing = await marketplaceContract.getListedNft(tokenId);
-        console.log('Listing:', listing); // Log the listing details
+        console.log('Listing:', listing);
         setIsListed(listing.isActive);
 
         setLoading(false);
@@ -48,12 +48,17 @@ const NFTDisplay = ({ contractAddress, tokenId, provider }) => {
     try {
       const signer = provider.getSigner();
       const nftContract = new ethers.Contract(contractAddress, NFT_artifacts.abi, signer);
-      const marketplaceContract = new ethers.Contract(Marketplace_address, Marketplace_artifacts.abi, signer);
+      const marketplaceContract = new ethers.Contract(Marketplace_address.HeroMarketplace, Marketplace_artifacts.abi, signer);
 
-      const approvalTx = await nftContract.approve(Marketplace_address, tokenId);
+      const approvalTx = await nftContract.approve(Marketplace_address.HeroMarketplace, tokenId);
       await approvalTx.wait();
 
       const price = prompt("Enter the listing price in ETH:");
+      if (!price || isNaN(price)) {
+        alert("Invalid price entered. Please enter a valid number.");
+        return;
+      }
+
       const listTx = await marketplaceContract.listNft(tokenId, ethers.utils.parseEther(price));
       await listTx.wait();
       
@@ -67,7 +72,7 @@ const NFTDisplay = ({ contractAddress, tokenId, provider }) => {
   const unlistNft = async () => {
     try {
       const signer = provider.getSigner();
-      const marketplaceContract = new ethers.Contract(Marketplace_address, Marketplace_artifacts.abi, signer);
+      const marketplaceContract = new ethers.Contract(Marketplace_address.HeroMarketplace, Marketplace_artifacts.abi, signer);
 
       const unlistTx = await marketplaceContract.unlistNft(tokenId);
       await unlistTx.wait();
@@ -99,7 +104,12 @@ const NFTDisplay = ({ contractAddress, tokenId, provider }) => {
               <Button variant="primary" href={nftData.external_url} target="_blank" rel="noopener noreferrer">
                 View NFT
               </Button>
-              <Button variant="success" onClick={listNft} disabled={isListed} style={{ marginLeft: '10px' }}>
+              <Button 
+                variant="success" 
+                onClick={listNft} 
+                disabled={isListed} 
+                style={{ marginLeft: '10px', flex: 1, margin: '0 5px' }}
+              >
                 List NFT
               </Button>
             </Card.Body>

@@ -234,7 +234,6 @@ export class App_User extends React.Component {
         <div className="container full">
           <Card className="text-center" style={{ backgroundColor: "#f5f5f5" }}>
             <Card.Body>
-              <Card.Title>Welcome User To Courses</Card.Title>
               <WalletConnector onLogin={this.props.onLogin} />
             </Card.Body>
           </Card>

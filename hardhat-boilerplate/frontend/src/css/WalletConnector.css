@@ -1,0 +1,52 @@
+.notification-list {
+  margin-top: 20px;
+}
+
+.notification-card {
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  background-color: #ffffff;
+  transition: transform 0.2s ease-in-out;
+}
+
+.notification-card:hover {
+  transform: translateY(-5px);
+}
+
+.notification-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.notification-icon {
+  margin-left: 10px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.notification-icon:hover {
+  transform: scale(1.1);
+}
+
+.notification-content {
+  margin-top: 10px;
+}
+
+.show-more-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  margin-top: 10px;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 4px;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.show-more-btn:hover {
+  background-color: #0056b3;
+}
