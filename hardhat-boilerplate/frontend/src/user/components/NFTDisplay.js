@@ -4,6 +4,7 @@ import { ethers } from 'ethers';
 import NFT_artifacts from "../../contracts/Hero.json";
 import Marketplace_address from "../../contracts/contract-HeroMarketplace-address.json";
 import Marketplace_artifacts from "../../contracts/HeroMarketplace.json";
+import '../../css/NFTDisplay.css';
 
 const NFTDisplay = ({ contractAddress, tokenId, provider }) => {
   const [nftData, setNFTData] = useState(null);
@@ -14,7 +15,7 @@ const NFTDisplay = ({ contractAddress, tokenId, provider }) => {
     const fetchData = async () => {
       try {
         if (!contractAddress || !tokenId || !provider) {
-          throw new Error('contractAddress, tokenId, or provider is undefined');
+          throw new Error('contractAddress, tokenId, hoặc provider bị undefined');
         }
 
         const contract = new ethers.Contract(contractAddress, NFT_artifacts.abi, provider);
@@ -53,16 +54,16 @@ const NFTDisplay = ({ contractAddress, tokenId, provider }) => {
       const approvalTx = await nftContract.approve(Marketplace_address.HeroMarketplace, tokenId);
       await approvalTx.wait();
 
-      const price = prompt("Enter the listing price in ETH:");
+      const price = prompt("Nhập giá niêm yết bằng ETH:");
       if (!price || isNaN(price)) {
-        alert("Invalid price entered. Please enter a valid number.");
+        alert("Giá nhập vào không hợp lệ. Vui lòng nhập một số hợp lệ.");
         return;
       }
 
       const listTx = await marketplaceContract.listNft(tokenId, ethers.utils.parseEther(price));
       await listTx.wait();
       
-      alert("NFT listed successfully!");
+      alert("NFT đã được niêm yết thành công!");
       setIsListed(true);
     } catch (error) {
       console.error('Error listing NFT:', error);
@@ -77,7 +78,7 @@ const NFTDisplay = ({ contractAddress, tokenId, provider }) => {
       const unlistTx = await marketplaceContract.unlistNft(tokenId);
       await unlistTx.wait();
       
-      alert("NFT unlisted successfully!");
+      alert("NFT đã được hủy niêm yết thành công!");
       setIsListed(false);
     } catch (error) {
       console.error('Error unlisting NFT:', error);
@@ -85,33 +86,34 @@ const NFTDisplay = ({ contractAddress, tokenId, provider }) => {
   };
 
   if (loading) {
-    return <p>Loading...</p>;
+    return <p>Đang tải...</p>;
   }
 
   if (!nftData) {
-    return <p>No data found for this NFT.</p>;
+    return <p>Không tìm thấy dữ liệu cho NFT này.</p>;
   }
 
   return (
-    <div className="text-center p-4">
-      <Card style={{ width: '18rem', margin: '0 auto' }}>
+    <div className="nft-display text-center p-4">
+      <Card className="nft-display card">
         {nftData && (
           <>
-            <Card.Img variant="top" src={nftData.image} />
+            <Card.Img variant="top" src={nftData.image} className="nft-display card-img-top" />
             <Card.Body>
-              <Card.Title>{nftData.name}</Card.Title>
-              <Card.Text>{nftData.description}</Card.Text>
-              <Button variant="primary" href={nftData.external_url} target="_blank" rel="noopener noreferrer">
-                View NFT
-              </Button>
-              <Button 
-                variant="success" 
-                onClick={listNft} 
-                disabled={isListed} 
-                style={{ marginLeft: '10px', flex: 1, margin: '0 5px' }}
-              >
-                List NFT
-              </Button>
+              <Card.Title className="nft-display card-title">{nftData.name}</Card.Title>
+              <Card.Text className="nft-display card-text">{nftData.description}</Card.Text>
+              <div className="nft-display button-group">
+                <Button variant="primary" href={nftData.external_url} target="_blank" rel="noopener noreferrer">
+                  Xem NFT
+                </Button>
+                <Button 
+                  variant="success" 
+                  onClick={listNft} 
+                  disabled={isListed}
+                >
+                  Niêm yết NFT
+                </Button>
+              </div>
             </Card.Body>
           </>
         )}

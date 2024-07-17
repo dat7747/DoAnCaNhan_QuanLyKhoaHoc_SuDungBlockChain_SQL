@@ -1,0 +1,66 @@
+.nft-display .text-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f2f5;
+    padding: 20px;
+}
+
+.nft-display .card {
+    width: 20rem;
+    margin: 0 auto;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.nft-display .card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+}
+
+.nft-display .card-img-top {
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    height: 250px;
+    object-fit: cover;
+}
+
+.nft-display .card-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.nft-display .card-text {
+    font-size: 1rem;
+    color: #555;
+}
+
+.nft-display .button-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.nft-display .btn-primary, .nft-display .btn-success {
+    flex: 1;
+    margin: 5px;
+}
+
+.nft-display .btn-primary:hover, .nft-display .btn-success:hover {
+    opacity: 0.8;
+}
+
+.view-card-course .btn-secondary {
+    margin-left: 10px;
+}
+
+.view-card-course .modal-header, .view-card-course .modal-footer {
+    background-color: #f0f2f5;
+    border: none;
+}
+
+.view-card-course .modal-title {
+    color: #007bff;
+    font-weight: bold;
+}

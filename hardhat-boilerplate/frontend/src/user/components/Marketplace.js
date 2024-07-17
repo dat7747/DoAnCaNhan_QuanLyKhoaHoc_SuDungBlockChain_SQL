@@ -5,6 +5,7 @@ import Marketplace_address from "../../contracts/contract-HeroMarketplace-addres
 import Marketplace_artifacts from "../../contracts/HeroMarketplace.json";
 import NFT_address from "../../contracts/contract-Hero-address.json";
 import NFT_artifacts from "../../contracts/Hero.json";
+import '../../css/Marketplace.css';
 
 const Marketplace = ({ provider }) => {
   const [listedNfts, setListedNfts] = useState([]);
@@ -86,28 +87,25 @@ const Marketplace = ({ provider }) => {
 
   return (
     <Container className="marketplace">
-      <h2>Listed NFTs</h2>
       <Row>
         {listedNfts.map((nft) => (
           <Col key={nft.tokenId} sm={6} md={4} lg={3}>
-            <Card className="nft-card mb-4">
+            <Card className="marketplace nft-card">
               <Card.Img variant="top" src={nft.image} />
               <Card.Body>
-                <Card.Title>{nft.name}</Card.Title>
-                <Card.Text>{nft.description}</Card.Text>
-                <Card.Text>Price: {ethers.utils.formatEther(nft.price)} ETH</Card.Text>
-                <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+                <Card.Title className="marketplace nft-card-title">{nft.name}</Card.Title>
+                <Card.Text className="marketplace nft-card-text">{nft.description}</Card.Text>
+                <Card.Text className="marketplace nft-card-text">Price: {ethers.utils.formatEther(nft.price)} ETH</Card.Text>
+                <div className="marketplace button-group">
                   <Button 
                     variant="primary" 
                     onClick={() => buyNFT(nft.tokenId, nft.price)}
-                    style={{ flex: 1, margin: '0 5px' }}
                   >
                     Buy
                   </Button>
                   <Button 
                     variant="danger" 
                     onClick={() => unlistNFT(nft.tokenId)}
-                    style={{ flex: 1, margin: '0 5px' }}
                   >
                     Unlist
                   </Button>

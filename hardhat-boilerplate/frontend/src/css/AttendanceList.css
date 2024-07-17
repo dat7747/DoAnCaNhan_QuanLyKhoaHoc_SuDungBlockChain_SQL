@@ -6,18 +6,18 @@
   margin-bottom: 20px;
 }
 
-.course-id-input {
+.attendance-list .course-id-input {
   padding: 8px;
   margin-right: 10px;
   border-radius: 5px;
   border: 1px solid #ccc;
 }
 
-.course-id-input:hover {
+.attendance-list .course-id-input:hover {
   border-color: #007bff;
 }
 
-.fetch-button {
+.attendance-list .fetch-button {
   padding: 8px 12px;
   border: none;
   border-radius: 5px;
@@ -27,7 +27,7 @@
   transition: background-color 0.3s;
 }
 
-.fetch-button:hover {
+.attendance-list .fetch-button:hover {
   background-color: #0056b3;
 }
 
