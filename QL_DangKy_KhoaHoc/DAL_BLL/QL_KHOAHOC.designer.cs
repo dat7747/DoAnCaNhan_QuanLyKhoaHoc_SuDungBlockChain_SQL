@@ -9,7 +9,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace QL_DangKy_KhoaHoc
+namespace DAL_BLL
 {
 	using System.Data.Linq;
 	using System.Data.Linq.Mapping;
@@ -45,7 +45,7 @@ namespace QL_DangKy_KhoaHoc
     #endregion
 		
 		public QL_KHOAHOCDataContext() : 
-				base(global::QL_DangKy_KhoaHoc.Properties.Settings.Default.blockchainConnectionString, mappingSource)
+				base(global::DAL_BLL.Properties.Settings.Default.blockchainConnectionString, mappingSource)
 		{
 			OnCreated();
 		}
@@ -74,19 +74,19 @@ namespace QL_DangKy_KhoaHoc
 			OnCreated();
 		}
 		
-		public System.Data.Linq.Table<course> courses
-		{
-			get
-			{
-				return this.GetTable<course>();
-			}
-		}
-		
 		public System.Data.Linq.Table<UserAttendance> UserAttendances
 		{
 			get
 			{
 				return this.GetTable<UserAttendance>();
+			}
+		}
+		
+		public System.Data.Linq.Table<course> courses
+		{
+			get
+			{
+				return this.GetTable<course>();
 			}
 		}
 		
@@ -127,6 +127,87 @@ namespace QL_DangKy_KhoaHoc
 			get
 			{
 				return this.GetTable<ClassDetail>();
+			}
+		}
+	}
+	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserAttendance")]
+	public partial class UserAttendance
+	{
+		
+		private System.Nullable<int> _courseId;
+		
+		private string _address;
+		
+		private System.Nullable<int> _sessionNumber;
+		
+		private System.Nullable<byte> _attended;
+		
+		public UserAttendance()
+		{
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_courseId", DbType="Int")]
+		public System.Nullable<int> courseId
+		{
+			get
+			{
+				return this._courseId;
+			}
+			set
+			{
+				if ((this._courseId != value))
+				{
+					this._courseId = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address", DbType="VarChar(100)")]
+		public string address
+		{
+			get
+			{
+				return this._address;
+			}
+			set
+			{
+				if ((this._address != value))
+				{
+					this._address = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sessionNumber", DbType="Int")]
+		public System.Nullable<int> sessionNumber
+		{
+			get
+			{
+				return this._sessionNumber;
+			}
+			set
+			{
+				if ((this._sessionNumber != value))
+				{
+					this._sessionNumber = value;
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_attended", DbType="TinyInt")]
+		public System.Nullable<byte> attended
+		{
+			get
+			{
+				return this._attended;
+			}
+			set
+			{
+				if ((this._attended != value))
+				{
+					this._attended = value;
+				}
 			}
 		}
 	}
@@ -342,87 +423,6 @@ namespace QL_DangKy_KhoaHoc
 		{
 			this.SendPropertyChanging();
 			entity.course = null;
-		}
-	}
-	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserAttendance")]
-	public partial class UserAttendance
-	{
-		
-		private System.Nullable<int> _courseId;
-		
-		private string _address;
-		
-		private System.Nullable<int> _sessionNumber;
-		
-		private System.Nullable<byte> _attended;
-		
-		public UserAttendance()
-		{
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_courseId", DbType="Int")]
-		public System.Nullable<int> courseId
-		{
-			get
-			{
-				return this._courseId;
-			}
-			set
-			{
-				if ((this._courseId != value))
-				{
-					this._courseId = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address", DbType="VarChar(100)")]
-		public string address
-		{
-			get
-			{
-				return this._address;
-			}
-			set
-			{
-				if ((this._address != value))
-				{
-					this._address = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_sessionNumber", DbType="Int")]
-		public System.Nullable<int> sessionNumber
-		{
-			get
-			{
-				return this._sessionNumber;
-			}
-			set
-			{
-				if ((this._sessionNumber != value))
-				{
-					this._sessionNumber = value;
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_attended", DbType="TinyInt")]
-		public System.Nullable<byte> attended
-		{
-			get
-			{
-				return this._attended;
-			}
-			set
-			{
-				if ((this._attended != value))
-				{
-					this._attended = value;
-				}
-			}
 		}
 	}
 	
@@ -1035,10 +1035,6 @@ namespace QL_DangKy_KhoaHoc
 		
 		private System.DateTime _endTime;
 		
-		private string _teacherName;
-		
-		private string _classRoom;
-		
 		private EntityRef<course> _course;
 		
     #region Extensibility Method Definitions
@@ -1057,10 +1053,6 @@ namespace QL_DangKy_KhoaHoc
     partial void OnstartTimeChanged();
     partial void OnendTimeChanging(System.DateTime value);
     partial void OnendTimeChanged();
-    partial void OnteacherNameChanging(string value);
-    partial void OnteacherNameChanged();
-    partial void OnclassRoomChanging(string value);
-    partial void OnclassRoomChanged();
     #endregion
 		
 		public ClassDetail()
@@ -1189,46 +1181,6 @@ namespace QL_DangKy_KhoaHoc
 					this._endTime = value;
 					this.SendPropertyChanged("endTime");
 					this.OnendTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_teacherName", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string teacherName
-		{
-			get
-			{
-				return this._teacherName;
-			}
-			set
-			{
-				if ((this._teacherName != value))
-				{
-					this.OnteacherNameChanging(value);
-					this.SendPropertyChanging();
-					this._teacherName = value;
-					this.SendPropertyChanged("teacherName");
-					this.OnteacherNameChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_classRoom", DbType="NVarChar(50)")]
-		public string classRoom
-		{
-			get
-			{
-				return this._classRoom;
-			}
-			set
-			{
-				if ((this._classRoom != value))
-				{
-					this.OnclassRoomChanging(value);
-					this.SendPropertyChanging();
-					this._classRoom = value;
-					this.SendPropertyChanged("classRoom");
-					this.OnclassRoomChanged();
 				}
 			}
 		}

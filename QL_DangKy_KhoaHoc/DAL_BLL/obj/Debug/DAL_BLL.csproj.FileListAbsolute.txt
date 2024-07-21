@@ -1,0 +1,7 @@
+C:\FileNayChuBaiTap\DoAnCaNhan_QuanLyKhoaHoc_SuDungBlockChain_SQL\QL_DangKy_KhoaHoc\DAL_BLL\bin\Debug\DAL_BLL.dll
+C:\FileNayChuBaiTap\DoAnCaNhan_QuanLyKhoaHoc_SuDungBlockChain_SQL\QL_DangKy_KhoaHoc\DAL_BLL\bin\Debug\DAL_BLL.pdb
+C:\FileNayChuBaiTap\DoAnCaNhan_QuanLyKhoaHoc_SuDungBlockChain_SQL\QL_DangKy_KhoaHoc\DAL_BLL\obj\Debug\DAL_BLL.csproj.CoreCompileInputs.cache
+C:\FileNayChuBaiTap\DoAnCaNhan_QuanLyKhoaHoc_SuDungBlockChain_SQL\QL_DangKy_KhoaHoc\DAL_BLL\obj\Debug\DAL_BLL.dll
+C:\FileNayChuBaiTap\DoAnCaNhan_QuanLyKhoaHoc_SuDungBlockChain_SQL\QL_DangKy_KhoaHoc\DAL_BLL\obj\Debug\DAL_BLL.pdb
+C:\FileNayChuBaiTap\DoAnCaNhan_QuanLyKhoaHoc_SuDungBlockChain_SQL\QL_DangKy_KhoaHoc\DAL_BLL\bin\Debug\DAL_BLL.dll.config
+C:\FileNayChuBaiTap\DoAnCaNhan_QuanLyKhoaHoc_SuDungBlockChain_SQL\QL_DangKy_KhoaHoc\DAL_BLL\obj\Debug\DAL_BLL.csproj.AssemblyReference.cache
