@@ -101,22 +101,30 @@ namespace QL_DangKy_KhoaHoc
             string classDescription = txt_chiTiet.Text;
             DateTime startTime = dtpk_ngayBatDau.Value;
             DateTime endTime = dtpk_ngayKetThuc.Value;
+            string status = cbb_status.SelectedItem.ToString(); // Lấy giá trị trạng thái từ giao diện người dùng
 
             try
             {
-                cs.SaveOrUpdateClassDetails(courseId, className, classDescription, startTime, endTime);
+                // Gọi phương thức SaveOrUpdateClassDetails với trạng thái
+                cs.SaveOrUpdateClassDetails(courseId, className, classDescription, startTime, endTime, status);
 
+                // Cập nhật DataGridView
                 LoadDataGridView();
 
+                // Xóa thông tin trong các textbox và thiết lập lại trạng thái các nút
                 clear();
                 btn_Luu.Enabled = false;
 
+                // Hiển thị thông báo thành công
                 MessageBox.Show("Lưu thông tin thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
+                // Hiển thị thông báo lỗi
                 MessageBox.Show($"Có lỗi xảy ra: {ex.Message}", "Thông báo lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+            // Vô hiệu hóa nút Lưu sau khi xử lý
             btn_Luu.Enabled = false;
         }
 

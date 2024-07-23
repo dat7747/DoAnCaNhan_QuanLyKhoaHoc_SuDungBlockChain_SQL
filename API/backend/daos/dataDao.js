@@ -64,24 +64,26 @@ async function saveNotification(id, notification, zoom_link, session_number) {
 
 async function getNotifications(address) {
     try {
-      await sql.connect(config);
-      const request = new sql.Request();
-      const query = `
-        SELECT n.notification, n.zoom_link, n.session_number, n.created_at, n.id AS courseId
-        FROM notifications n
-        JOIN info i ON n.id = i.id
-        WHERE i.address = '${address}'
-        ORDER BY n.created_at DESC
-      `;
-      const result = await request.query(query);
-      return result.recordset;
+        await sql.connect(config);
+        const request = new sql.Request();
+        const query = `
+            SELECT n.notification, n.zoom_link, n.session_number, n.created_at, n.id AS courseId, cd.className
+            FROM notifications n
+            JOIN info i ON n.id = i.id
+            JOIN ClassDetails cd ON n.id = cd.courseId
+            WHERE i.address = '${address}'
+            ORDER BY n.created_at DESC
+        `;
+        const result = await request.query(query);
+        return result.recordset;
     } catch (error) {
-      console.error('Error fetching notifications from the database:', error);
-      throw error;
+        console.error('Error fetching notifications from the database:', error);
+        throw error;
     } finally {
-      sql.close();
+        sql.close();
     }
-  }
+}
+
 
 const addUserAttendance = async (courseId, address, sessionNumber, attended) => {
     try {
@@ -168,6 +170,29 @@ async function updateTransactionStatus(transactionHash, status) {
     }
 }
 
+async function getClassDetails(courseId) {
+    try {
+        await sql.connect(config);
+        const request = new sql.Request();
+        const query = `
+            SELECT 
+                cd.classId, cd.courseId, cd.className, cd.classDescription, cd.startTime, cd.endTime, 
+                c.price, c.session, c.status, c.image
+            FROM 
+                ClassDetails cd
+            JOIN 
+                course c ON cd.courseId = c.id
+            WHERE 
+                cd.courseId = ${courseId}`;
+        const result = await request.query(query);
+        return result.recordset;
+    } catch (error) {
+        throw error;
+    }
+}
+
+
+
 
 module.exports = {
 addData,
@@ -180,5 +205,6 @@ addRegistration,
 getCourses,
 editCourse,
 logTokenWithdrawal,
-updateTransactionStatus };
+updateTransactionStatus,
+getClassDetails };
 

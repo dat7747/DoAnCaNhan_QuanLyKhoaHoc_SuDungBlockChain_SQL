@@ -22,6 +22,7 @@ export class App_User extends React.Component {
   constructor(props) {
     super(props);
 
+    // Define initial state
     this.state = {
       courses: [],
       loadingCourses: true,
@@ -35,13 +36,15 @@ export class App_User extends React.Component {
       selectedTab: "course"
     };
 
+    // Set up Ethereum provider and signer
     if (window.ethereum) {
       this.provider = new ethers.providers.Web3Provider(window.ethereum);
     } else {
       this.provider = new ethers.providers.JsonRpcProvider();
     }
-
     this.signer = this.provider.getSigner();
+
+    // Initialize contract instances
     this.contract = new ethers.Contract(
       contractAddress.CourseRegistration,
       CourseRegistrationArtifact.abi,
@@ -55,16 +58,17 @@ export class App_User extends React.Component {
     );
   }
 
+  // Fetch courses and NFTs when component mounts
   async componentDidMount() {
     this.getCourses();
-    this.fetchNFTs(); // Gọi hàm để lấy danh sách NFT khi component được gắn kết
+    this.fetchNFTs();
   }
 
+  // Function to send course registration data to backend
   async sendDataToBackend(courseId, gmail, address, selectedCourseId) {
     try {
-      const id = courseId;
       const response = await axios.post("http://localhost:3001/api/addData", {
-        id,
+        id: courseId,
         gmail,
         address
       });
@@ -74,10 +78,11 @@ export class App_User extends React.Component {
     }
   }
 
+  // Function to fetch courses from backend
   async getCourses() {
     try {
-      const response = await axios.get("http://localhost:3001/api/getCourses"); // Đảm bảo đường dẫn endpoint chính xác
-      const courses = response.data; // Giả sử dữ liệu được trả về là mảng các khóa học
+      const response = await axios.get("http://localhost:3001/api/getCourses");
+      const courses = response.data;
       this.setState({ courses, loadingCourses: false });
     } catch (error) {
       console.error("Error getting courses from backend:", error);
@@ -85,6 +90,7 @@ export class App_User extends React.Component {
     }
   }
 
+  // Function to fetch user's NFTs
   async fetchNFTs() {
     try {
       const address = await this.signer.getAddress();
@@ -109,6 +115,7 @@ export class App_User extends React.Component {
     }
   }
 
+  // Function to handle course registration
   async registerCourse(courseId) {
     try {
       const course = this.state.courses.find((course) => course.id === courseId);
@@ -118,8 +125,8 @@ export class App_User extends React.Component {
 
       const signerAddress = await this.signer.getAddress();
       const price = course.price;
-
       const balance = await this.tokenContract.balanceOf(signerAddress);
+
       if (balance.lt(price)) {
         throw new Error("Insufficient balance to register for this course");
       }
@@ -130,38 +137,27 @@ export class App_User extends React.Component {
         this.signer
       );
 
-      // Call the smart contract function
       const receipt = await this.courseRegistrationContract.register(courseId);
-      console.log("receipt: ", receipt);
-      await receipt.wait(); // Chờ đợi cho đến khi giao dịch được xác nhận
+      await receipt.wait();
       const transactionHash = receipt.hash;
 
-      // Get transaction receipt
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const transactionReceipt = await provider.getTransactionReceipt(transactionHash);
 
-      // Check if transactionReceipt is valid
       if (!transactionReceipt) {
         throw new Error("Transaction receipt is null");
       }
 
-      // Update selectedCourseId in state
       this.setState({ selectedCourseId: courseId });
 
-      // Prepare data to send to backend
       const registrationInfo = {
         courseId: courseId,
         senderAddress: signerAddress,
         transactionHash: transactionReceipt.transactionHash
       };
 
-      // Log data before sending to backend
-      console.log("Sending registration info to backend:", registrationInfo);
-
-      // Send registration info to backend
       await axios.post("http://localhost:3001/api/addRegistration", registrationInfo);
 
-      // Update state and fetch courses again
       this.setState({ successMessage: "Đăng ký thành công!" });
       await this.getCourses();
     } catch (error) {
@@ -172,10 +168,12 @@ export class App_User extends React.Component {
     }
   }
 
+  // Handle tab change
   handleTabChange(tab) {
     this.setState({ selectedTab: tab });
   }
 
+  // Render method
   render() {
     const { courses, loadingCourses, selectedCourseId, processingTransaction, errorCourses, nfts, loadingNFTs, errorNFTs, selectedTab } = this.state;
 
@@ -220,9 +218,7 @@ export class App_User extends React.Component {
           );
           break;
         case "nft-marketplace":
-          content = (
-            <Marketplace provider={this.provider} />
-          );
+          content = <Marketplace provider={this.provider} />;
           break;
         default:
           content = null;

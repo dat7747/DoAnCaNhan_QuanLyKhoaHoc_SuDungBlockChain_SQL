@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, Button, Form, Modal, Col, Container, Row } from "react-bootstrap";
+import CourseDetails from './CourseDetails';
 import '../../css/ViewCardCourse.css'; // Import the enhanced CSS
 
 export class ViewCardCourse extends React.Component {
@@ -8,12 +9,15 @@ export class ViewCardCourse extends React.Component {
         this.state = {
             email: "",
             showModal: false,
-            selectedCourse: null
+            selectedCourse: null,
+            selectedCourseId: null,
+            showCourseDetails: false
         };
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handleSendEmail = this.handleSendEmail.bind(this);
         this.handleShowDetails = this.handleShowDetails.bind(this);
         this.handleCloseModal = this.handleCloseModal.bind(this);
+        this.handleRegister = this.handleRegister.bind(this);
     }
 
     handleEmailChange(event) {
@@ -28,7 +32,7 @@ export class ViewCardCourse extends React.Component {
         console.log("Sending email:", selectedCourseId, email, address);
         await sendDataToBackend(selectedCourseId, email, address);
         alert("Email đã được gửi thành công!");
-        this.setState({ email: "" });
+        this.setState({ email: "", showModal: false }); // Close modal after sending email
     }
 
     formatPrice(price) {
@@ -41,17 +45,22 @@ export class ViewCardCourse extends React.Component {
         return `${priceString} EDU`;
     }
 
-    handleShowDetails(course) {
-        this.setState({ showModal: true, selectedCourse: course });
+    handleShowDetails(courseId) {
+        this.setState({ showCourseDetails: true, selectedCourseId: courseId });
     }
 
     handleCloseModal() {
-        this.setState({ showModal: false, selectedCourse: null });
+        this.setState({ showCourseDetails: false, selectedCourseId: null, showModal: false });
+    }
+
+    async handleRegister(courseId, coursePrice) {
+        await this.props.onRegister(courseId, coursePrice); // Gọi hàm onRegister từ props để thực hiện đăng ký trên smart contract
+        this.setState({ showModal: true, selectedCourseId: courseId }); // Hiển thị modal sau khi đăng ký thành công
     }
 
     render() {
         const { courses, processingTransaction } = this.props;
-        const { email, showModal, selectedCourse } = this.state;
+        const { email, showModal, selectedCourse, showCourseDetails, selectedCourseId } = this.state;
 
         return (
             <div className="view-card-course">
@@ -73,10 +82,10 @@ export class ViewCardCourse extends React.Component {
                                                     Sessions: {course.session}
                                                 </Card.Text>
                                                 <div className="d-flex justify-content-between">
-                                                    <Button variant="primary" onClick={() => this.props.onRegister(course.id, course.price)} disabled={processingTransaction}>
+                                                    <Button variant="primary" onClick={() => this.handleRegister(course.id, course.price)} disabled={processingTransaction}>
                                                         Register
                                                     </Button>
-                                                    <Button variant="primary" onClick={() => this.handleShowDetails(course)}>
+                                                    <Button variant="primary" onClick={() => this.handleShowDetails(course.id)}>
                                                         See details
                                                     </Button>
                                                 </div>
@@ -90,9 +99,15 @@ export class ViewCardCourse extends React.Component {
                         )}
                     </Row>
                 </Container>
-                {this.props.selectedCourseId && (
-                    <Modal show={true}>
-                        <Modal.Header closeButton={false}>
+                {showCourseDetails && (
+                    <CourseDetails
+                        courseId={selectedCourseId}
+                        onClose={this.handleCloseModal}
+                    />
+                )}
+                {showModal && (
+                    <Modal show={true} onHide={this.handleCloseModal}>
+                        <Modal.Header closeButton>
                             <Modal.Title>Thông báo</Modal.Title>
                         </Modal.Header>
                         <Modal.Body>
@@ -105,25 +120,8 @@ export class ViewCardCourse extends React.Component {
                             </Form>
                         </Modal.Body>
                         <Modal.Footer>
+                            <Button variant="secondary" onClick={this.handleCloseModal}>Close</Button>
                             <Button variant="primary" onClick={this.handleSendEmail}>Send Email</Button>
-                        </Modal.Footer>
-                    </Modal>
-                )}
-                {showModal && selectedCourse && (
-                    <Modal show={showModal} onHide={this.handleCloseModal}>
-                        <Modal.Header closeButton>
-                            <Modal.Title>Chi tiết khóa học</Modal.Title>
-                        </Modal.Header>
-                        <Modal.Body>
-                            <p><strong>Course ID:</strong> {selectedCourse.id}</p>
-                            <p><strong>Price:</strong> {this.formatPrice(selectedCourse.price)} EDU</p>
-                            <p><strong>Sessions:</strong> {selectedCourse.session}</p>
-                            <p><strong>Description:</strong> {selectedCourse.description}</p>
-                        </Modal.Body>
-                        <Modal.Footer>
-                            <Button variant="primary" onClick={this.handleCloseModal}>
-                                Close
-                            </Button>
                         </Modal.Footer>
                     </Modal>
                 )}
@@ -131,5 +129,3 @@ export class ViewCardCourse extends React.Component {
         );
     }
 }
-
-export default ViewCardCourse;

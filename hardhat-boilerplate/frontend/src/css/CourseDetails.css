@@ -1,0 +1,24 @@
+.course-details {
+    text-align: center;
+}
+
+.course-details h3 {
+    font-size: 2em;
+    margin-top: 10px;
+}
+
+.course-details p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.course-image {
+    margin-bottom: 20px;
+}
+
+.course-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}

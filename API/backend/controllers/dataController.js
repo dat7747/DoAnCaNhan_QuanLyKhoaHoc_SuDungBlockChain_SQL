@@ -168,6 +168,17 @@ async function updateTransactionStatus(req, res) {
     }
 }
 
+async function getClassDetails(req, res) {
+    const { courseId } = req.query;
+    try {
+        const result = await dataService.getClassDetails(courseId);
+        res.status(200).json({ data: result });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ message: 'Failed to get class details' });
+    }
+}
+
 
 module.exports = { 
 addData, 
@@ -180,4 +191,5 @@ addRegistration,
 getCourses, 
 editCourse,
 logTokenWithdrawal,
-updateTransactionStatus};
+updateTransactionStatus,
+getClassDetails};

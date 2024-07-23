@@ -107,6 +107,16 @@ async function updateTransactionStatus(transactionHash, status) {
   }
 }
 
+async function getClassDetails(courseId) {
+  try {
+      const result = await dataDao.getClassDetails(courseId);
+      return result;
+  } catch (error) {
+      throw error;
+  }
+}
+
+
 module.exports = { 
 addData,
 addCourse,
@@ -118,5 +128,6 @@ addRegistration,
 getCourses,
 editCourse,
 logTokenWithdrawal,
-updateTransactionStatus};
+updateTransactionStatus,
+getClassDetails};
 

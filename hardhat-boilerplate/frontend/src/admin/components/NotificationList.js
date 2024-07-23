@@ -21,10 +21,11 @@ const NotificationList = ({ notifications, selectedAddress }) => {
     event.preventDefault();
     console.log(notification);
     try {
-      const { courseId, session_number, zoom_link } = notification;
+      const { courseId, session_number, zoom_link, class_name } = notification;
       console.log('courseId:', courseId);
       console.log('sessionNumber:', session_number);
       console.log('zoom_link:', zoom_link);
+      console.log('class_name:', class_name);
       console.log('selectedAddress:', selectedAddress);
       if (!courseId || !session_number) {
         throw new Error("Invalid courseId or sessionNumber");
@@ -45,7 +46,7 @@ const NotificationList = ({ notifications, selectedAddress }) => {
       });
       console.log('API response:', response.data);
       toast.success("Attendance recorded successfully!");
-      window.location.href = zoom_link;
+      window.open(zoom_link, "_blank");
     } catch (error) {
       console.error('Error marking attendance and saving to DB:', error);
       toast.error("Failed to record attendance.");
@@ -55,7 +56,7 @@ const NotificationList = ({ notifications, selectedAddress }) => {
   return (
     <Container className="notification-list">
       {displayedNotifications.length === 0 ? (
-        <p></p>
+        <p>Không có thông báo nào.</p>
       ) : (
         <div>
           {displayedNotifications.map((notification, index) => (
@@ -66,21 +67,23 @@ const NotificationList = ({ notifications, selectedAddress }) => {
                   <FaBell className="notification-icon" />
                 </div>
                 <Card.Text className="notification-content">
-                  <strong>Notification:</strong> {notification.notification}
+                  <strong>Tên lớp học:</strong> {notification.className}
                   <br />
-                  <strong>Zoom Link:</strong> 
+                  <strong>Thông báo:</strong> {notification.notification}
+                  <br />
+                  <strong>Link Zoom:</strong> 
                   <a href={notification.zoom_link} onClick={(event) => handleZoomLinkClick(event, notification)}>
                     {notification.zoom_link}
                   </a>
                   <br />
-                  <strong>Session Number:</strong> {notification.session_number}
+                  <strong>Số buổi:</strong> {notification.session_number}
                 </Card.Text>
               </Card.Body>
             </Card>
           ))}
           {notifications.length > 1 && (
             <Button className="show-more-btn" onClick={toggleShowAll}>
-              {showAll ? 'Show Less' : 'Show More'}
+              {showAll ? 'Thu gọn' : 'Xem thêm'}
             </Button>
           )}
         </div>
