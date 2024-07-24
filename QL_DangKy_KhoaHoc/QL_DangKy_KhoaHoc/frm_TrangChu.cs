@@ -17,6 +17,7 @@ namespace QL_DangKy_KhoaHoc
         public frm_TrangChu()
         {
             InitializeComponent();
+
         }
 
         private void barButtonItem1_ItemClick(object sender, ItemClickEventArgs e)
@@ -28,6 +29,24 @@ namespace QL_DangKy_KhoaHoc
 
         private void frm_TrangChu_Load(object sender, EventArgs e)
         {
+        }
+
+        private void barButtonItem2_ItemClick(object sender, ItemClickEventArgs e)
+        {
+        }
+
+        private void q_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frm_LichSuDangKy_KhoaHoc fr = new frm_LichSuDangKy_KhoaHoc();
+            fr.MdiParent = this;
+            fr.Show();
+        }
+
+        private void btn_ThongBao_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frm_LichSuThongBao fr = new frm_LichSuThongBao();
+            fr.MdiParent = this;
+            fr.Show();
         }
     }
 }

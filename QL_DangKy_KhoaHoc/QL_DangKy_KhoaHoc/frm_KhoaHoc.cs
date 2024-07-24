@@ -37,7 +37,7 @@ namespace QL_DangKy_KhoaHoc
             cbb_status.Items.Add("closed");
 
             // Tải dữ liệu lên dataGridView1
-            dataGridView1.DataSource = cs.GetCourses();
+            LoadDataGridView();
 
             // Thiết lập dataGridView1 chỉ đọc
             dataGridView1.ReadOnly = true;
@@ -151,7 +151,23 @@ namespace QL_DangKy_KhoaHoc
             dataGridView1.Columns["classDescription"].Visible = false;
             dataGridView1.Columns["startTime"].Visible = false;
             dataGridView1.Columns["endTime"].Visible = false;
+
+            // Đặt lại tiêu đề cột
+            dataGridView1.Columns["id"].HeaderText = "Course ID";
+            dataGridView1.Columns["className"].HeaderText = "Course Name";
+            dataGridView1.Columns["status"].HeaderText = "Status";
+            dataGridView1.Columns["price"].HeaderText = "Price";
+            dataGridView1.Columns["session"].HeaderText = "Session";
+            // In đậm tiêu đề các cột
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.HeaderCell.Style.Font = new Font("Segoe UI", 10F, FontStyle.Bold, GraphicsUnit.Point);
+            }
+
+            // Đặt chế độ chỉ đọc cho DataGridView
+            dataGridView1.ReadOnly = true;
         }
+
 
         private void btn_Xoa_Click(object sender, EventArgs e)
         {

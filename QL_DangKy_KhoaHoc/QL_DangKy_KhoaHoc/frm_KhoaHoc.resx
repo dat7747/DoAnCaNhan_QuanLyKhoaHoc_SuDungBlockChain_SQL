@@ -140,7 +140,7 @@
     <value>True</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="simpleButton4.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btn_lamMoi.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Semibold, 12pt, style=Bold</value>
   </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
@@ -148,7 +148,7 @@
     <value>Fill</value>
   </data>
   <assembly alias="DevExpress.Data.v24.1" name="DevExpress.Data.v24.1, Version=24.1.3.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-  <data name="simpleButton4.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_lamMoi.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjI0LjEsIFZlcnNpb249MjQuMS4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
@@ -195,13 +195,13 @@
   <metadata name="btn_Xoa.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="simpleButton2.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btn_Xoa.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Semibold, 12pt, style=Bold</value>
   </data>
   <data name="btn_Xoa.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
     <value>Fill</value>
   </data>
-  <data name="simpleButton2.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_Xoa.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjI0LjEsIFZlcnNpb249MjQuMS4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
@@ -249,7 +249,7 @@
   <metadata name="btn_Luu.Locked" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
-  <data name="simpleButton3.Appearance.Font" type="System.Drawing.Font, System.Drawing">
+  <data name="btn_Luu.Appearance.Font" type="System.Drawing.Font, System.Drawing">
     <value>Segoe UI Semibold, 12pt, style=Bold</value>
   </data>
   <data name="btn_Luu.Dock" type="System.Windows.Forms.DockStyle, System.Windows.Forms">
@@ -258,7 +258,7 @@
   <data name="btn_Luu.Enabled" type="System.Boolean, mscorlib">
     <value>False</value>
   </data>
-  <data name="simpleButton3.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
+  <data name="btn_Luu.ImageOptions.SvgImage" type="DevExpress.Utils.Svg.SvgImage, DevExpress.Data.v24.1" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAEAAAD/////AQAAAAAAAAAMAgAAAFlEZXZFeHByZXNzLkRhdGEudjI0LjEsIFZlcnNpb249MjQuMS4z
         LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49Yjg4ZDE3NTRkNzAwZTQ5YQUBAAAAHURl
@@ -445,7 +445,7 @@
     <value>10, 0</value>
   </data>
   <data name="label1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>702, 58</value>
+    <value>702, 59</value>
   </data>
   <data name="label1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -475,10 +475,10 @@
     <value>Fill</value>
   </data>
   <data name="dataGridView1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>10, 61</value>
+    <value>10, 62</value>
   </data>
   <data name="dataGridView1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>702, 417</value>
+    <value>702, 418</value>
   </data>
   <data name="dataGridView1.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -499,13 +499,13 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 30</value>
+    <value>3, 28</value>
   </data>
   <data name="tableLayoutPanel4.RowCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="tableLayoutPanel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>726, 481</value>
+    <value>726, 483</value>
   </data>
   <data name="tableLayoutPanel4.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -577,7 +577,7 @@
     <value>14, 0</value>
   </data>
   <data name="label2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>709, 57</value>
+    <value>709, 58</value>
   </data>
   <data name="label2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -613,10 +613,10 @@
     <value>False</value>
   </data>
   <data name="dtpk_ngayKetThuc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 269</value>
+    <value>172, 272</value>
   </data>
   <data name="dtpk_ngayKetThuc.Size" type="System.Drawing.Size, System.Drawing">
-    <value>534, 34</value>
+    <value>534, 32</value>
   </data>
   <data name="dtpk_ngayKetThuc.TabIndex" type="System.Int32, mscorlib">
     <value>26</value>
@@ -640,7 +640,7 @@
     <value>False</value>
   </data>
   <data name="txt_chiTiet.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 143</value>
+    <value>172, 144</value>
   </data>
   <data name="txt_chiTiet.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -679,13 +679,13 @@
     <value>NoControl</value>
   </data>
   <data name="label_pirceandsession.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 390</value>
+    <value>172, 395</value>
   </data>
   <data name="label_pirceandsession.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Yes</value>
   </data>
   <data name="label_pirceandsession.Size" type="System.Drawing.Size, System.Drawing">
-    <value>534, 28</value>
+    <value>534, 24</value>
   </data>
   <data name="label_pirceandsession.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
@@ -724,13 +724,13 @@
     <value>NoControl</value>
   </data>
   <data name="label_idcourse.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 27</value>
+    <value>172, 32</value>
   </data>
   <data name="label_idcourse.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Yes</value>
   </data>
   <data name="label_idcourse.Size" type="System.Drawing.Size, System.Drawing">
-    <value>534, 28</value>
+    <value>534, 24</value>
   </data>
   <data name="label_idcourse.TabIndex" type="System.Int32, mscorlib">
     <value>13</value>
@@ -766,7 +766,7 @@
     <value>NoControl</value>
   </data>
   <data name="label15.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 360</value>
+    <value>3, 361</value>
   </data>
   <data name="label15.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 58</value>
@@ -805,7 +805,7 @@
     <value>NoControl</value>
   </data>
   <data name="label13.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 306</value>
+    <value>3, 307</value>
   </data>
   <data name="label13.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 54</value>
@@ -844,7 +844,7 @@
     <value>NoControl</value>
   </data>
   <data name="label11.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 250</value>
+    <value>3, 251</value>
   </data>
   <data name="label11.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 56</value>
@@ -883,7 +883,7 @@
     <value>NoControl</value>
   </data>
   <data name="label9.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 198</value>
+    <value>3, 199</value>
   </data>
   <data name="label9.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 52</value>
@@ -922,7 +922,7 @@
     <value>NoControl</value>
   </data>
   <data name="label7.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 140</value>
+    <value>3, 141</value>
   </data>
   <data name="label7.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 58</value>
@@ -961,7 +961,7 @@
     <value>NoControl</value>
   </data>
   <data name="label5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 55</value>
+    <value>3, 56</value>
   </data>
   <data name="label5.Size" type="System.Drawing.Size, System.Drawing">
     <value>163, 85</value>
@@ -1000,7 +1000,7 @@
     <value>3, 0</value>
   </data>
   <data name="label3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>163, 55</value>
+    <value>163, 56</value>
   </data>
   <data name="label3.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1030,7 +1030,7 @@
     <value>False</value>
   </data>
   <data name="txt_tenLopHoc.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 58</value>
+    <value>172, 59</value>
   </data>
   <data name="txt_tenLopHoc.Multiline" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -1060,10 +1060,10 @@
     <value>False</value>
   </data>
   <data name="dtpk_ngayBatDau.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 213</value>
+    <value>172, 216</value>
   </data>
   <data name="dtpk_ngayBatDau.Size" type="System.Drawing.Size, System.Drawing">
-    <value>534, 34</value>
+    <value>534, 32</value>
   </data>
   <data name="dtpk_ngayBatDau.TabIndex" type="System.Int32, mscorlib">
     <value>25</value>
@@ -1087,10 +1087,10 @@
     <value>False</value>
   </data>
   <data name="cbb_status.Location" type="System.Drawing.Point, System.Drawing">
-    <value>172, 321</value>
+    <value>172, 322</value>
   </data>
   <data name="cbb_status.Size" type="System.Drawing.Size, System.Drawing">
-    <value>534, 36</value>
+    <value>534, 32</value>
   </data>
   <data name="cbb_status.TabIndex" type="System.Int32, mscorlib">
     <value>27</value>
@@ -1111,13 +1111,13 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 60</value>
+    <value>14, 61</value>
   </data>
   <data name="tableLayoutPanel6.RowCount" type="System.Int32, mscorlib">
     <value>7</value>
   </data>
   <data name="tableLayoutPanel6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>709, 418</value>
+    <value>709, 419</value>
   </data>
   <data name="tableLayoutPanel6.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -1141,13 +1141,13 @@
     <value>Fill</value>
   </data>
   <data name="tableLayoutPanel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>3, 30</value>
+    <value>3, 28</value>
   </data>
   <data name="tableLayoutPanel5.RowCount" type="System.Int32, mscorlib">
     <value>2</value>
   </data>
   <data name="tableLayoutPanel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>726, 481</value>
+    <value>726, 483</value>
   </data>
   <data name="tableLayoutPanel5.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -1264,7 +1264,7 @@
     <value>1524, 680</value>
   </data>
   <data name="$this.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Segoe UI Semibold, 12pt, style=Bold</value>
+    <value>Tahoma, 12pt</value>
   </data>
   <data name="$this.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
     <value>Yes</value>

@@ -68,6 +68,18 @@
     <Compile Include="frm_KhoaHoc.Designer.cs">
       <DependentUpon>frm_KhoaHoc.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_LichSuDangKy_KhoaHoc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_LichSuDangKy_KhoaHoc.Designer.cs">
+      <DependentUpon>frm_LichSuDangKy_KhoaHoc.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_LichSuThongBao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_LichSuThongBao.Designer.cs">
+      <DependentUpon>frm_LichSuThongBao.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_TrangChu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -78,6 +90,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frm_KhoaHoc.resx">
       <DependentUpon>frm_KhoaHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_LichSuDangKy_KhoaHoc.resx">
+      <DependentUpon>frm_LichSuDangKy_KhoaHoc.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_LichSuThongBao.resx">
+      <DependentUpon>frm_LichSuThongBao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_TrangChu.resx">
       <DependentUpon>frm_TrangChu.cs</DependentUpon>

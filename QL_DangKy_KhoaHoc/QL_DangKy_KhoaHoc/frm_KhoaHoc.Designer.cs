@@ -98,28 +98,28 @@ namespace QL_DangKy_KhoaHoc
             // 
             // btn_lamMoi
             // 
-            this.btn_lamMoi.Appearance.Font = ((System.Drawing.Font)(resources.GetObject("simpleButton4.Appearance.Font")));
+            this.btn_lamMoi.Appearance.Font = ((System.Drawing.Font)(resources.GetObject("btn_lamMoi.Appearance.Font")));
             this.btn_lamMoi.Appearance.Options.UseFont = true;
             resources.ApplyResources(this.btn_lamMoi, "btn_lamMoi");
-            this.btn_lamMoi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton4.ImageOptions.SvgImage")));
+            this.btn_lamMoi.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_lamMoi.ImageOptions.SvgImage")));
             this.btn_lamMoi.Name = "btn_lamMoi";
             this.btn_lamMoi.Click += new System.EventHandler(this.btn_lamMoi_Click);
             // 
             // btn_Xoa
             // 
-            this.btn_Xoa.Appearance.Font = ((System.Drawing.Font)(resources.GetObject("simpleButton2.Appearance.Font")));
+            this.btn_Xoa.Appearance.Font = ((System.Drawing.Font)(resources.GetObject("btn_Xoa.Appearance.Font")));
             this.btn_Xoa.Appearance.Options.UseFont = true;
             resources.ApplyResources(this.btn_Xoa, "btn_Xoa");
-            this.btn_Xoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
+            this.btn_Xoa.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_Xoa.ImageOptions.SvgImage")));
             this.btn_Xoa.Name = "btn_Xoa";
             this.btn_Xoa.Click += new System.EventHandler(this.btn_Xoa_Click);
             // 
             // btn_Luu
             // 
-            this.btn_Luu.Appearance.Font = ((System.Drawing.Font)(resources.GetObject("simpleButton3.Appearance.Font")));
+            this.btn_Luu.Appearance.Font = ((System.Drawing.Font)(resources.GetObject("btn_Luu.Appearance.Font")));
             this.btn_Luu.Appearance.Options.UseFont = true;
             resources.ApplyResources(this.btn_Luu, "btn_Luu");
-            this.btn_Luu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton3.ImageOptions.SvgImage")));
+            this.btn_Luu.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("btn_Luu.ImageOptions.SvgImage")));
             this.btn_Luu.Name = "btn_Luu";
             this.btn_Luu.Click += new System.EventHandler(this.simpleButton3_Click);
             // 
