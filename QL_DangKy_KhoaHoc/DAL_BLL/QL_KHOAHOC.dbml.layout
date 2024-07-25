@@ -32,12 +32,6 @@
         <elementListCompartment Id="5fe2dfde-e6a9-4a6e-b99a-4f2456e77a0f" absoluteBounds="3.515, 8.835, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="8241ba0f-7fd9-4398-ab73-381bd1c0534a" absoluteBounds="6.75, 0.75, 2, 2.3478011067708335">
-      <DataClassMoniker Name="/QL_KHOAHOCDataContext/TokenWithdrawal" />
-      <nestedChildShapes>
-        <elementListCompartment Id="65963fdf-4160-4ebb-b4e6-c157a6ad6e22" absoluteBounds="6.765, 1.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
-      </nestedChildShapes>
-    </classShape>
     <associationConnector edgePoints="[(1.75 : 6.5); (1.75 : 4.28929768880208); (2.19791916666667 : 4.28929768880208 : JumpStart); (2.36458583333333 : 4.28929768880208 : JumpEnd); (3.5 : 4.28929768880208)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QL_KHOAHOCDataContext/course/course_UserAttendance" />
       <nodes>
@@ -72,12 +66,24 @@
         <elementListCompartment Id="fbcb3737-0bcd-4343-bca4-36226f7bb04c" absoluteBounds="7.39, 6.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(2.75 : 7.98964680989583); (7.375 : 7.98964680989583)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+    <associationConnector edgePoints="[(2.75 : 7.98964680989583); (7.375 : 7.98964680989583)]" fixedFrom="NotFixed" fixedTo="NotFixed">
       <AssociationMoniker Name="/QL_KHOAHOCDataContext/course/course_ClassDetail" />
       <nodes>
         <classShapeMoniker Id="c71190d6-6576-4ddf-9ca5-036f859f0aa0" />
         <classShapeMoniker Id="3dde8261-c23f-4055-b0ad-09c1383d6a0f" />
       </nodes>
     </associationConnector>
+    <classShape Id="fa23545e-2abf-4367-a77c-8167d884c6d3" absoluteBounds="7.25, 2, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/QL_KHOAHOCDataContext/TokenWithdrawal" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6366835f-de5c-4c31-b527-2c540d813ef9" absoluteBounds="7.265, 2.46, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="79e4699a-35b0-4b67-a9e5-c669e3d07c8d" absoluteBounds="7.375, 1.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/QL_KHOAHOCDataContext/UserRole" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4fb8c96f-1617-4b06-a43d-8222d5abd5e5" absoluteBounds="7.39, 1.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>

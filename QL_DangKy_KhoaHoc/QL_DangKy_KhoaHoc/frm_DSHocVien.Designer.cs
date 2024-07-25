@@ -1,7 +1,7 @@
 ﻿
 namespace QL_DangKy_KhoaHoc
 {
-    partial class frm_LichSuThongBao
+    partial class frm_DSHocVien
     {
         /// <summary>
         /// Required designer variable.
@@ -29,24 +29,26 @@ namespace QL_DangKy_KhoaHoc
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_LichSuThongBao));
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_DSHocVien));
             this.label1 = new System.Windows.Forms.Label();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.txt_search_lop = new System.Windows.Forms.TextBox();
+            this.txt_search_address = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
             this.dtpk_search_day = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
@@ -54,17 +56,17 @@ namespace QL_DangKy_KhoaHoc
             this.tableLayoutPanel5.SuspendLayout();
             this.SuspendLayout();
             // 
-            // dataGridView1
+            // label1
             // 
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 19);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1473, 329);
-            this.dataGridView1.TabIndex = 0;
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(21, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(1479, 75);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Danh Sách Học Viên";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tableLayoutPanel1
             // 
@@ -86,18 +88,6 @@ namespace QL_DangKy_KhoaHoc
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1524, 680);
             this.tableLayoutPanel1.TabIndex = 1;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Tahoma", 28.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(21, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(1479, 75);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Lịch Sử Thông Báo Lịch Học";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.dataGridView1);
@@ -107,7 +97,20 @@ namespace QL_DangKy_KhoaHoc
             this.groupBox1.Size = new System.Drawing.Size(1479, 351);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Danh sách đăng ký";
+            this.groupBox1.Text = "Danh sách ";
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 19);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(1473, 329);
+            this.dataGridView1.TabIndex = 0;
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
             // 
             // groupBox2
             // 
@@ -142,7 +145,9 @@ namespace QL_DangKy_KhoaHoc
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.16438F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.83562F));
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.txt_search_lop, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.txt_search_address, 1, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -166,6 +171,18 @@ namespace QL_DangKy_KhoaHoc
             this.label2.Text = "Tìm theo lớp:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 75);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(184, 54);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Tìm theo địa chỉ:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txt_search_lop
             // 
             this.txt_search_lop.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -175,7 +192,16 @@ namespace QL_DangKy_KhoaHoc
             this.txt_search_lop.Name = "txt_search_lop";
             this.txt_search_lop.Size = new System.Drawing.Size(534, 49);
             this.txt_search_lop.TabIndex = 2;
-            this.txt_search_lop.TextChanged += new System.EventHandler(this.txt_search_lop_TextChanged);
+            // 
+            // txt_search_address
+            // 
+            this.txt_search_address.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_search_address.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_search_address.Location = new System.Drawing.Point(193, 78);
+            this.txt_search_address.Multiline = true;
+            this.txt_search_address.Name = "txt_search_address";
+            this.txt_search_address.Size = new System.Drawing.Size(534, 48);
+            this.txt_search_address.TabIndex = 3;
             // 
             // tableLayoutPanel4
             // 
@@ -215,7 +241,6 @@ namespace QL_DangKy_KhoaHoc
             this.dtpk_search_day.Name = "dtpk_search_day";
             this.dtpk_search_day.Size = new System.Drawing.Size(379, 23);
             this.dtpk_search_day.TabIndex = 2;
-            this.dtpk_search_day.ValueChanged += new System.EventHandler(this.dtpk_search_day_ValueChanged);
             // 
             // tableLayoutPanel5
             // 
@@ -244,21 +269,19 @@ namespace QL_DangKy_KhoaHoc
             this.simpleButton1.Size = new System.Drawing.Size(158, 55);
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "Làm Mới ";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
-            // frm_LichSuThongBao
+            // frm_DSHocVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1524, 680);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "frm_LichSuThongBao";
-            this.Text = "Lịch Sử Thông Báo Lịch Học";
-            this.Load += new System.EventHandler(this.frm_LichSuThongBao_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.Name = "frm_DSHocVien";
+            this.Text = "Danh Sách Học Viên";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
@@ -272,15 +295,17 @@ namespace QL_DangKy_KhoaHoc
 
         #endregion
 
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_search_lop;
+        private System.Windows.Forms.TextBox txt_search_address;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dtpk_search_day;

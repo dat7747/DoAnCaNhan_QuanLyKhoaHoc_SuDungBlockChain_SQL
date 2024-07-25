@@ -62,6 +62,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frm_DiemDanh.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_DiemDanh.Designer.cs">
+      <DependentUpon>frm_DiemDanh.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frm_DSHocVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_DSHocVien.Designer.cs">
+      <DependentUpon>frm_DSHocVien.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_KhoaHoc.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -80,6 +92,12 @@
     <Compile Include="frm_LichSuThongBao.Designer.cs">
       <DependentUpon>frm_LichSuThongBao.cs</DependentUpon>
     </Compile>
+    <Compile Include="frm_RutToken.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frm_RutToken.Designer.cs">
+      <DependentUpon>frm_RutToken.cs</DependentUpon>
+    </Compile>
     <Compile Include="frm_TrangChu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -88,6 +106,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frm_DiemDanh.resx">
+      <DependentUpon>frm_DiemDanh.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_DSHocVien.resx">
+      <DependentUpon>frm_DSHocVien.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frm_KhoaHoc.resx">
       <DependentUpon>frm_KhoaHoc.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frm_LichSuThongBao.resx">
       <DependentUpon>frm_LichSuThongBao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frm_RutToken.resx">
+      <DependentUpon>frm_RutToken.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frm_TrangChu.resx">
       <DependentUpon>frm_TrangChu.cs</DependentUpon>

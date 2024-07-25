@@ -1,7 +1,7 @@
 ﻿
 namespace QL_DangKy_KhoaHoc
 {
-    partial class frm_LichSuThongBao
+    partial class frm_RutToken
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@ namespace QL_DangKy_KhoaHoc
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_LichSuThongBao));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frm_RutToken));
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
@@ -38,10 +38,10 @@ namespace QL_DangKy_KhoaHoc
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.txt_search_lop = new System.Windows.Forms.TextBox();
+            this.txt_search_address = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dtpk_search_day = new System.Windows.Forms.DateTimePicker();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -84,7 +84,7 @@ namespace QL_DangKy_KhoaHoc
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 227F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1524, 680);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.tableLayoutPanel1.TabIndex = 2;
             // 
             // label1
             // 
@@ -95,7 +95,7 @@ namespace QL_DangKy_KhoaHoc
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(1479, 75);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Lịch Sử Thông Báo Lịch Học";
+            this.label1.Text = "Thông Tin Rút Token";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // groupBox1
@@ -142,7 +142,9 @@ namespace QL_DangKy_KhoaHoc
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 26.16438F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 73.83562F));
             this.tableLayoutPanel3.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.label3, 0, 2);
             this.tableLayoutPanel3.Controls.Add(this.txt_search_lop, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.txt_search_address, 1, 2);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -166,6 +168,18 @@ namespace QL_DangKy_KhoaHoc
             this.label2.Text = "Tìm theo lớp:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(3, 75);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(184, 54);
+            this.label3.TabIndex = 1;
+            this.label3.Text = "Tìm theo địa chỉ:";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // txt_search_lop
             // 
             this.txt_search_lop.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -175,7 +189,16 @@ namespace QL_DangKy_KhoaHoc
             this.txt_search_lop.Name = "txt_search_lop";
             this.txt_search_lop.Size = new System.Drawing.Size(534, 49);
             this.txt_search_lop.TabIndex = 2;
-            this.txt_search_lop.TextChanged += new System.EventHandler(this.txt_search_lop_TextChanged);
+            // 
+            // txt_search_address
+            // 
+            this.txt_search_address.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txt_search_address.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txt_search_address.Location = new System.Drawing.Point(193, 78);
+            this.txt_search_address.Multiline = true;
+            this.txt_search_address.Name = "txt_search_address";
+            this.txt_search_address.Size = new System.Drawing.Size(534, 48);
+            this.txt_search_address.TabIndex = 3;
             // 
             // tableLayoutPanel4
             // 
@@ -183,8 +206,6 @@ namespace QL_DangKy_KhoaHoc
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 30.52065F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 69.47935F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 176F));
-            this.tableLayoutPanel4.Controls.Add(this.label4, 0, 0);
-            this.tableLayoutPanel4.Controls.Add(this.dtpk_search_day, 1, 0);
             this.tableLayoutPanel4.Controls.Add(this.tableLayoutPanel5, 1, 2);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(739, 3);
@@ -195,27 +216,6 @@ namespace QL_DangKy_KhoaHoc
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 82F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(731, 184);
             this.tableLayoutPanel4.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label4.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(3, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(163, 56);
-            this.label4.TabIndex = 1;
-            this.label4.Text = "Tìm theo ngày:";
-            this.label4.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
-            // 
-            // dtpk_search_day
-            // 
-            this.dtpk_search_day.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dtpk_search_day.Location = new System.Drawing.Point(172, 30);
-            this.dtpk_search_day.Name = "dtpk_search_day";
-            this.dtpk_search_day.Size = new System.Drawing.Size(379, 23);
-            this.dtpk_search_day.TabIndex = 2;
-            this.dtpk_search_day.ValueChanged += new System.EventHandler(this.dtpk_search_day_ValueChanged);
             // 
             // tableLayoutPanel5
             // 
@@ -244,17 +244,15 @@ namespace QL_DangKy_KhoaHoc
             this.simpleButton1.Size = new System.Drawing.Size(158, 55);
             this.simpleButton1.TabIndex = 0;
             this.simpleButton1.Text = "Làm Mới ";
-            this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
-            // frm_LichSuThongBao
+            // frm_RutToken
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1524, 680);
             this.Controls.Add(this.tableLayoutPanel1);
-            this.Name = "frm_LichSuThongBao";
-            this.Text = "Lịch Sử Thông Báo Lịch Học";
-            this.Load += new System.EventHandler(this.frm_LichSuThongBao_Load);
+            this.Name = "frm_RutToken";
+            this.Text = "Giao Diện Rút Token";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
@@ -264,7 +262,6 @@ namespace QL_DangKy_KhoaHoc
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
             this.tableLayoutPanel4.ResumeLayout(false);
-            this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -280,10 +277,10 @@ namespace QL_DangKy_KhoaHoc
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txt_search_lop;
+        private System.Windows.Forms.TextBox txt_search_address;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DateTimePicker dtpk_search_day;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
     }

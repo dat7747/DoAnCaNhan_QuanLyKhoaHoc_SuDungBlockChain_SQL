@@ -36,12 +36,15 @@ namespace DAL_BLL
     partial void InsertCourseRegistrationHistory(CourseRegistrationHistory instance);
     partial void UpdateCourseRegistrationHistory(CourseRegistrationHistory instance);
     partial void DeleteCourseRegistrationHistory(CourseRegistrationHistory instance);
-    partial void InsertTokenWithdrawal(TokenWithdrawal instance);
-    partial void UpdateTokenWithdrawal(TokenWithdrawal instance);
-    partial void DeleteTokenWithdrawal(TokenWithdrawal instance);
     partial void InsertClassDetail(ClassDetail instance);
     partial void UpdateClassDetail(ClassDetail instance);
     partial void DeleteClassDetail(ClassDetail instance);
+    partial void InsertTokenWithdrawal(TokenWithdrawal instance);
+    partial void UpdateTokenWithdrawal(TokenWithdrawal instance);
+    partial void DeleteTokenWithdrawal(TokenWithdrawal instance);
+    partial void InsertUserRole(UserRole instance);
+    partial void UpdateUserRole(UserRole instance);
+    partial void DeleteUserRole(UserRole instance);
     #endregion
 		
 		public QL_KHOAHOCDataContext() : 
@@ -114,6 +117,14 @@ namespace DAL_BLL
 			}
 		}
 		
+		public System.Data.Linq.Table<ClassDetail> ClassDetails
+		{
+			get
+			{
+				return this.GetTable<ClassDetail>();
+			}
+		}
+		
 		public System.Data.Linq.Table<TokenWithdrawal> TokenWithdrawals
 		{
 			get
@@ -122,11 +133,11 @@ namespace DAL_BLL
 			}
 		}
 		
-		public System.Data.Linq.Table<ClassDetail> ClassDetails
+		public System.Data.Linq.Table<UserRole> UserRoles
 		{
 			get
 			{
-				return this.GetTable<ClassDetail>();
+				return this.GetTable<UserRole>();
 			}
 		}
 	}
@@ -787,6 +798,229 @@ namespace DAL_BLL
 		}
 	}
 	
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ClassDetails")]
+	public partial class ClassDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	{
+		
+		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
+		
+		private int _classId;
+		
+		private int _courseId;
+		
+		private string _className;
+		
+		private string _classDescription;
+		
+		private System.DateTime _startTime;
+		
+		private System.DateTime _endTime;
+		
+		private EntityRef<course> _course;
+		
+    #region Extensibility Method Definitions
+    partial void OnLoaded();
+    partial void OnValidate(System.Data.Linq.ChangeAction action);
+    partial void OnCreated();
+    partial void OnclassIdChanging(int value);
+    partial void OnclassIdChanged();
+    partial void OncourseIdChanging(int value);
+    partial void OncourseIdChanged();
+    partial void OnclassNameChanging(string value);
+    partial void OnclassNameChanged();
+    partial void OnclassDescriptionChanging(string value);
+    partial void OnclassDescriptionChanged();
+    partial void OnstartTimeChanging(System.DateTime value);
+    partial void OnstartTimeChanged();
+    partial void OnendTimeChanging(System.DateTime value);
+    partial void OnendTimeChanged();
+    #endregion
+		
+		public ClassDetail()
+		{
+			this._course = default(EntityRef<course>);
+			OnCreated();
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_classId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int classId
+		{
+			get
+			{
+				return this._classId;
+			}
+			set
+			{
+				if ((this._classId != value))
+				{
+					this.OnclassIdChanging(value);
+					this.SendPropertyChanging();
+					this._classId = value;
+					this.SendPropertyChanged("classId");
+					this.OnclassIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_courseId", DbType="Int NOT NULL")]
+		public int courseId
+		{
+			get
+			{
+				return this._courseId;
+			}
+			set
+			{
+				if ((this._courseId != value))
+				{
+					if (this._course.HasLoadedOrAssignedValue)
+					{
+						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
+					}
+					this.OncourseIdChanging(value);
+					this.SendPropertyChanging();
+					this._courseId = value;
+					this.SendPropertyChanged("courseId");
+					this.OncourseIdChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_className", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
+		public string className
+		{
+			get
+			{
+				return this._className;
+			}
+			set
+			{
+				if ((this._className != value))
+				{
+					this.OnclassNameChanging(value);
+					this.SendPropertyChanging();
+					this._className = value;
+					this.SendPropertyChanged("className");
+					this.OnclassNameChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_classDescription", DbType="NVarChar(MAX)")]
+		public string classDescription
+		{
+			get
+			{
+				return this._classDescription;
+			}
+			set
+			{
+				if ((this._classDescription != value))
+				{
+					this.OnclassDescriptionChanging(value);
+					this.SendPropertyChanging();
+					this._classDescription = value;
+					this.SendPropertyChanged("classDescription");
+					this.OnclassDescriptionChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_startTime", DbType="DateTime NOT NULL")]
+		public System.DateTime startTime
+		{
+			get
+			{
+				return this._startTime;
+			}
+			set
+			{
+				if ((this._startTime != value))
+				{
+					this.OnstartTimeChanging(value);
+					this.SendPropertyChanging();
+					this._startTime = value;
+					this.SendPropertyChanged("startTime");
+					this.OnstartTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endTime", DbType="DateTime NOT NULL")]
+		public System.DateTime endTime
+		{
+			get
+			{
+				return this._endTime;
+			}
+			set
+			{
+				if ((this._endTime != value))
+				{
+					this.OnendTimeChanging(value);
+					this.SendPropertyChanging();
+					this._endTime = value;
+					this.SendPropertyChanged("endTime");
+					this.OnendTimeChanged();
+				}
+			}
+		}
+		
+		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="course_ClassDetail", Storage="_course", ThisKey="courseId", OtherKey="id", IsForeignKey=true)]
+		public course course
+		{
+			get
+			{
+				return this._course.Entity;
+			}
+			set
+			{
+				course previousValue = this._course.Entity;
+				if (((previousValue != value) 
+							|| (this._course.HasLoadedOrAssignedValue == false)))
+				{
+					this.SendPropertyChanging();
+					if ((previousValue != null))
+					{
+						this._course.Entity = null;
+						previousValue.ClassDetails.Remove(this);
+					}
+					this._course.Entity = value;
+					if ((value != null))
+					{
+						value.ClassDetails.Add(this);
+						this._courseId = value.id;
+					}
+					else
+					{
+						this._courseId = default(int);
+					}
+					this.SendPropertyChanged("course");
+				}
+			}
+		}
+		
+		public event PropertyChangingEventHandler PropertyChanging;
+		
+		public event PropertyChangedEventHandler PropertyChanged;
+		
+		protected virtual void SendPropertyChanging()
+		{
+			if ((this.PropertyChanging != null))
+			{
+				this.PropertyChanging(this, emptyChangingEventArgs);
+			}
+		}
+		
+		protected virtual void SendPropertyChanged(String propertyName)
+		{
+			if ((this.PropertyChanged != null))
+			{
+				this.PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+			}
+		}
+	}
+	
 	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.TokenWithdrawals")]
 	public partial class TokenWithdrawal : INotifyPropertyChanging, INotifyPropertyChanged
 	{
@@ -1017,204 +1251,115 @@ namespace DAL_BLL
 		}
 	}
 	
-	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.ClassDetails")]
-	public partial class ClassDetail : INotifyPropertyChanging, INotifyPropertyChanged
+	[global::System.Data.Linq.Mapping.TableAttribute(Name="dbo.UserRoles")]
+	public partial class UserRole : INotifyPropertyChanging, INotifyPropertyChanged
 	{
 		
 		private static PropertyChangingEventArgs emptyChangingEventArgs = new PropertyChangingEventArgs(String.Empty);
 		
-		private int _classId;
+		private int _id;
 		
-		private int _courseId;
+		private string _address;
 		
-		private string _className;
+		private string _role;
 		
-		private string _classDescription;
-		
-		private System.DateTime _startTime;
-		
-		private System.DateTime _endTime;
-		
-		private EntityRef<course> _course;
+		private byte _status;
 		
     #region Extensibility Method Definitions
     partial void OnLoaded();
     partial void OnValidate(System.Data.Linq.ChangeAction action);
     partial void OnCreated();
-    partial void OnclassIdChanging(int value);
-    partial void OnclassIdChanged();
-    partial void OncourseIdChanging(int value);
-    partial void OncourseIdChanged();
-    partial void OnclassNameChanging(string value);
-    partial void OnclassNameChanged();
-    partial void OnclassDescriptionChanging(string value);
-    partial void OnclassDescriptionChanged();
-    partial void OnstartTimeChanging(System.DateTime value);
-    partial void OnstartTimeChanged();
-    partial void OnendTimeChanging(System.DateTime value);
-    partial void OnendTimeChanged();
+    partial void OnidChanging(int value);
+    partial void OnidChanged();
+    partial void OnaddressChanging(string value);
+    partial void OnaddressChanged();
+    partial void OnroleChanging(string value);
+    partial void OnroleChanged();
+    partial void OnstatusChanging(byte value);
+    partial void OnstatusChanged();
     #endregion
 		
-		public ClassDetail()
+		public UserRole()
 		{
-			this._course = default(EntityRef<course>);
 			OnCreated();
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_classId", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
-		public int classId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_id", AutoSync=AutoSync.OnInsert, DbType="Int NOT NULL IDENTITY", IsPrimaryKey=true, IsDbGenerated=true)]
+		public int id
 		{
 			get
 			{
-				return this._classId;
+				return this._id;
 			}
 			set
 			{
-				if ((this._classId != value))
+				if ((this._id != value))
 				{
-					this.OnclassIdChanging(value);
+					this.OnidChanging(value);
 					this.SendPropertyChanging();
-					this._classId = value;
-					this.SendPropertyChanged("classId");
-					this.OnclassIdChanged();
+					this._id = value;
+					this.SendPropertyChanged("id");
+					this.OnidChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_courseId", DbType="Int NOT NULL")]
-		public int courseId
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_address", DbType="VarChar(42) NOT NULL", CanBeNull=false)]
+		public string address
 		{
 			get
 			{
-				return this._courseId;
+				return this._address;
 			}
 			set
 			{
-				if ((this._courseId != value))
+				if ((this._address != value))
 				{
-					if (this._course.HasLoadedOrAssignedValue)
-					{
-						throw new System.Data.Linq.ForeignKeyReferenceAlreadyHasValueException();
-					}
-					this.OncourseIdChanging(value);
+					this.OnaddressChanging(value);
 					this.SendPropertyChanging();
-					this._courseId = value;
-					this.SendPropertyChanged("courseId");
-					this.OncourseIdChanged();
+					this._address = value;
+					this.SendPropertyChanged("address");
+					this.OnaddressChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_className", DbType="NVarChar(255) NOT NULL", CanBeNull=false)]
-		public string className
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_role", DbType="VarChar(50) NOT NULL", CanBeNull=false)]
+		public string role
 		{
 			get
 			{
-				return this._className;
+				return this._role;
 			}
 			set
 			{
-				if ((this._className != value))
+				if ((this._role != value))
 				{
-					this.OnclassNameChanging(value);
+					this.OnroleChanging(value);
 					this.SendPropertyChanging();
-					this._className = value;
-					this.SendPropertyChanged("className");
-					this.OnclassNameChanged();
+					this._role = value;
+					this.SendPropertyChanged("role");
+					this.OnroleChanged();
 				}
 			}
 		}
 		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_classDescription", DbType="NVarChar(MAX)")]
-		public string classDescription
+		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_status", DbType="TinyInt NOT NULL")]
+		public byte status
 		{
 			get
 			{
-				return this._classDescription;
+				return this._status;
 			}
 			set
 			{
-				if ((this._classDescription != value))
+				if ((this._status != value))
 				{
-					this.OnclassDescriptionChanging(value);
+					this.OnstatusChanging(value);
 					this.SendPropertyChanging();
-					this._classDescription = value;
-					this.SendPropertyChanged("classDescription");
-					this.OnclassDescriptionChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_startTime", DbType="DateTime NOT NULL")]
-		public System.DateTime startTime
-		{
-			get
-			{
-				return this._startTime;
-			}
-			set
-			{
-				if ((this._startTime != value))
-				{
-					this.OnstartTimeChanging(value);
-					this.SendPropertyChanging();
-					this._startTime = value;
-					this.SendPropertyChanged("startTime");
-					this.OnstartTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.ColumnAttribute(Storage="_endTime", DbType="DateTime NOT NULL")]
-		public System.DateTime endTime
-		{
-			get
-			{
-				return this._endTime;
-			}
-			set
-			{
-				if ((this._endTime != value))
-				{
-					this.OnendTimeChanging(value);
-					this.SendPropertyChanging();
-					this._endTime = value;
-					this.SendPropertyChanged("endTime");
-					this.OnendTimeChanged();
-				}
-			}
-		}
-		
-		[global::System.Data.Linq.Mapping.AssociationAttribute(Name="course_ClassDetail", Storage="_course", ThisKey="courseId", OtherKey="id", IsForeignKey=true)]
-		public course course
-		{
-			get
-			{
-				return this._course.Entity;
-			}
-			set
-			{
-				course previousValue = this._course.Entity;
-				if (((previousValue != value) 
-							|| (this._course.HasLoadedOrAssignedValue == false)))
-				{
-					this.SendPropertyChanging();
-					if ((previousValue != null))
-					{
-						this._course.Entity = null;
-						previousValue.ClassDetails.Remove(this);
-					}
-					this._course.Entity = value;
-					if ((value != null))
-					{
-						value.ClassDetails.Add(this);
-						this._courseId = value.id;
-					}
-					else
-					{
-						this._courseId = default(int);
-					}
-					this.SendPropertyChanged("course");
+					this._status = value;
+					this.SendPropertyChanged("status");
+					this.OnstatusChanged();
 				}
 			}
 		}

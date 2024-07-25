@@ -48,5 +48,26 @@ namespace QL_DangKy_KhoaHoc
             fr.MdiParent = this;
             fr.Show();
         }
+
+        private void barButtonItem3_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frm_DiemDanh fr = new frm_DiemDanh();
+            fr.MdiParent = this;
+            fr.Show();
+        }
+
+        private void barButtonItem18_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frm_RutToken fr = new frm_RutToken();
+            fr.MdiParent = this;
+            fr.Show();
+        }
+
+        private void barButtonItem5_ItemClick(object sender, ItemClickEventArgs e)
+        {
+            frm_DSHocVien fr = new frm_DSHocVien();
+            fr.MdiParent = this;
+            fr.Show();
+        }
     }
 }
