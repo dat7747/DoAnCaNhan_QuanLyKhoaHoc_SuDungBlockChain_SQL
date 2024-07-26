@@ -28,4 +28,5 @@ Các thông tin đăng ký khóa học được lưu trữ dưới SQL để qu�
   + Xây dựng sàn thương mại mua + bán NFT
     
 # Demo sản phẩm
-https://www.youtube.com/watch?v=Z6s6tgPI6Vc&t=12s
+Quản lý khóa học: https://www.youtube.com/watch?v=Z6s6tgPI6Vc&t=12s
+MarketPlace NFT: https://youtu.be/rDRdsixuINk
