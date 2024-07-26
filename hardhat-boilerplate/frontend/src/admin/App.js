@@ -83,38 +83,30 @@ export class App extends React.Component {
   
   addCourse = async (id, price, sessions, status, image) => {
     try {
-        // Chuyển đổi price từ EDU sang wei
-        const priceWei = ethers.utils.parseUnits(price, "ether");
-
         console.log("Submitting Course with values:");
         console.log("ID:", id);
-        console.log("Price (EDU):", price);
-        console.log("Price (wei):", priceWei.toString());
+        console.log("Price (ETH):", price);  // Log giá trị dưới dạng ETH
         console.log("Sessions:", sessions);
         console.log("Status:", status);
         console.log("Image:", image);
 
-        // Add to smart contract
         await this.contract.addCourse(
             ethers.BigNumber.from(id),
-            priceWei, // Truyền price đã chuyển đổi sang wei
+            ethers.BigNumber.from(price), // Truyền giá trị dưới dạng ETH
             ethers.BigNumber.from(sessions)
         );
 
-        // Tạo FormData
         const formData = new FormData();
         formData.append("id", id.toString());
-        formData.append("price", priceWei.toString()); // Truyền price đã chuyển đổi sang wei
+        formData.append("price", price.toString()); // Truyền giá trị dưới dạng ETH
         formData.append("sessions", sessions.toString());
         formData.append("status", status);
         formData.append("image", image);
 
-        // Log formData entries
         for (let pair of formData.entries()) {
             console.log(pair[0] + ': ' + pair[1]);
         }
 
-        // Gọi API để thêm khóa học vào backend
         const response = await axios.post(
             "http://localhost:3001/api/addCourse",
             formData,
@@ -139,7 +131,6 @@ export class App extends React.Component {
         this.setState({ error, loading: false });
     }
 };
-
 
   editCourse = async (courseId, price, sessions, status, image) => {
     try {

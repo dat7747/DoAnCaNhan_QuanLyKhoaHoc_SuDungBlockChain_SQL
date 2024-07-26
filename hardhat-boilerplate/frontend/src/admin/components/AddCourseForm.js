@@ -36,24 +36,22 @@ export class AddCourseForm extends React.Component {
     handleSubmit = async (event) => {
         event.preventDefault();
         const { id, price, sessions, status, image } = this.state;
-
+    
         if (!id || !price || !sessions || !image) {
             console.error("Invalid input data");
             return;
         }
-
+    
         console.log("Submitting Course with values:");
         console.log("ID:", id);
-        console.log("Price:", price);
+        console.log("Price (ETH):", price);
         console.log("Sessions:", sessions);
         console.log("Status:", status);
         console.log("Image:", image);
-
-        // Gọi hàm thêm khóa học được truyền từ props
+    
         try {
             await this.props.onSubmit(id, price, sessions, status, image);
-
-            // Reset state sau khi thêm thành công
+    
             this.setState({
                 id: "",
                 price: "",
@@ -67,6 +65,7 @@ export class AddCourseForm extends React.Component {
             this.setState({ successMessage: "" });
         }
     };
+    
 
     render() {
         return (
@@ -85,9 +84,10 @@ export class AddCourseForm extends React.Component {
                         />
                     </div>
                     <div className="form-group">
-                        <label htmlFor="price">Price</label>
+                        <label htmlFor="price">Price (in ETH)</label>
                         <input
                             type="number"
+                            step="0.0001"
                             className="form-control"
                             id="price"
                             value={this.state.price}
