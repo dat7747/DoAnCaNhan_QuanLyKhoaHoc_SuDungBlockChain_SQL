@@ -27,3 +27,5 @@ Các thông tin đăng ký khóa học được lưu trữ dưới SQL để qu�
   + Xây dựng tạo NFT
   + Xây dựng sàn thương mại mua + bán NFT
     
+# Demo sản phẩm
+https://www.youtube.com/watch?v=Z6s6tgPI6Vc&t=12s
