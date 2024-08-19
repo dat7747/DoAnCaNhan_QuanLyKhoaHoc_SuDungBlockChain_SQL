@@ -1,5 +1,4 @@
 # DoAnCaNhan_QuanLyKhoaHoc_SuDungBlockChain_SQL (Web)
-- Đây là đồ án cá nhân tự xây dựng. 
 - Dự án nhằm xây dựng mua bán các khóa học được tích hợp công nghệ blockchain nhằm tằng tính minh bạch trong tài chính. 
 Các thông tin đăng ký khóa học được lưu trữ dưới SQL để quản lý.
 
@@ -30,3 +29,10 @@ Các thông tin đăng ký khóa học được lưu trữ dưới SQL để qu�
 # Demo sản phẩm
 Quản lý khóa học: https://www.youtube.com/watch?v=Z6s6tgPI6Vc&t=12s
 MarketPlace NFT: https://youtu.be/rDRdsixuINk
+
+  # Ngôn ngữ được sử dụng
+- Javascript
+- C#
+
+  # Cơ sở dữ liệu
+- MY SQL
